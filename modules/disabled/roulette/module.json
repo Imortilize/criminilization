@@ -1,0 +1,12 @@
+{
+    "name": "Roulette",
+    "version": "1.0.0",
+    "description": "The casino game Roulette",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Roulette",
+    "accessInJail": true,
+    "requireLogin": true
+}

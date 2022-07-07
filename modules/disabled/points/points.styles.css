@@ -1,0 +1,37 @@
+.paypal .btn-primary {
+    margin-bottom: 0px;
+}
+
+.paypal .buy-button {
+    text-align: center;
+    padding-right: 0px;
+}
+
+.paypal .buy-button .btn {
+    color: #fff;
+    font-size: 12px;
+    width: 130px;
+}
+
+.crime-holder .cooldown.tag {
+    color: #ccc;
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+}
+
+@media (max-width: 767px) {
+
+    .crime-holder {
+        text-align: center;
+    }
+
+    .crime-holder .action,
+    .crime-holder .cooldown {
+        display: inline-block;
+        width: 48% !important;
+        text-align: center;
+        padding-right: 0px !important;
+    }
+
+}

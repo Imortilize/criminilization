@@ -1,0 +1,33 @@
+{
+    "name": "Investments",
+    "version": "1.0.0",
+    "description": "This module allows a user to invest their money.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Investments",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "View Investments",
+            "method": "view"
+        },
+        {
+            "text": "New Investment",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Investment",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Investment",
+            "method": "delete"
+        }
+    ]
+}

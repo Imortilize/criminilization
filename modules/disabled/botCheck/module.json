@@ -1,0 +1,12 @@
+{
+    "name": "Bot Check",
+    "version": "1.0.0",
+    "description": "This page checks the user is not a bot.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Bot Check",
+    "accessInJail": true,
+    "requireLogin": true
+}

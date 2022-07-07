@@ -1,0 +1,34 @@
+{
+    "name": "Polls",
+    "version": "1.0.0",
+    "description": "This allows you to create polls for your users to vote on",
+    "author": {
+        "name": "Chris Day",
+        "url": "https:\/\/cdcoding.com"
+    },
+    "pageName": "Polls",
+    "moduleCantBeDisabled": false,
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Communication",
+    "admin": [
+        {
+            "text": "View Polls",
+            "method": "view"
+        },
+        {
+            "text": "New Poll",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Poll",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Poll",
+            "method": "delete"
+        }
+    ]
+}

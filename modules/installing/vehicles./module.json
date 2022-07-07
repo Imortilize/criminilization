@@ -1,0 +1,33 @@
+{
+  "name": "Vehicles",
+  "version": "1.0.0",
+  "description": "From this page admin can create vehicles",
+  "author": {
+    "name": "Ali Harb",
+    "email": "harbzali@gmail.com"
+  },
+  "pageName": "Vehicles",
+  "accessInJail": false,
+  "requireLogin": true,
+  "adminGroup": "Game Mechanics",
+  "admin": [
+    {
+      "text": "View Vehicles",
+      "method": "view"
+    },
+    {
+      "text": "New Vehicle",
+      "method": "new"
+    },
+    {
+      "hide": true,
+      "text": "Edit Vehicle",
+      "method": "edit"
+    },
+    {
+      "hide": true,
+      "text": "Delete Vehicle",
+      "method": "delete"
+    }
+  ]
+}

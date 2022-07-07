@@ -1,0 +1,21 @@
+{
+    "name": "privacy",
+    "version": "1.0.0",
+    "description": "A page to display your privacy policy including some sample text",
+    "author": {
+        "name": "NIF",
+        "url": "https:\/\/makewebgames.io\/profile\/29968-nif\/"
+    },
+    "pageName": "Privacy Policy",
+    "moduleCantBeDisabled": false,
+    "accessInJail": false,
+    "requireLogin": false,
+    "adminGroup": "Pages",
+    "admin": [
+        {
+            "text": "privacy",
+            "method": "privacy",
+            "hide": false
+        }
+    ]
+}

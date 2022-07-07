@@ -1,0 +1,21 @@
+{
+    "name": "terms",
+    "version": "1.0.0",
+    "description": "A page to display your terms and conditions including some sample text",
+    "author": {
+        "name": "NIF",
+        "url": "https:\/\/makewebgames.io\/profile\/29968-nif\/"
+    },
+    "pageName": "Terms and Conditions",
+    "moduleCantBeDisabled": false,
+    "accessInJail": false,
+    "requireLogin": false,
+    "adminGroup": "Pages",
+    "admin": [
+        {
+            "text": "terms",
+            "method": "terms",
+            "hide": false
+        }
+    ]
+}

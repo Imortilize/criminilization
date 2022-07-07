@@ -1,0 +1,12 @@
+{
+  "name": "Users List",
+  "version": "1.0.0",
+  "description": "From this page shows users at same city",
+  "author": {
+    "name": "Ali Harb",
+    "email": "harbzali@gmail.com"
+  },
+  "pageName": "Users List",
+  "accessInJail": true,
+  "requireLogin": true
+}

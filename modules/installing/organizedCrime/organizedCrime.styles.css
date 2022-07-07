@@ -1,0 +1,20 @@
+.crime-holder .game-icon {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.crime-holder .cooldown.status {
+    width: 150px;
+    text-align: right;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    line-height: 18px;
+    float: right;
+    justify-content: flex-end;
+}
+
+select.form-control option {
+    background-color: #fff;
+    color: #000;
+}

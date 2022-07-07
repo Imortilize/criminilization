@@ -1,0 +1,28 @@
+{
+    "name": "Referral Rewards",
+    "version": "1.0.0",
+    "description": "This module allows a admin to modify referral rewards",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Referrals",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "User Management",
+    "admin": [
+        {
+            "text": "View Rewards",
+            "method": "viewRank"
+        },
+        {
+            "text": "View Referrals",
+            "method": "viewReferrals"
+        },
+        {
+            "hide": true,
+            "text": "Edit Rewards",
+            "method": "editRank"
+        }
+    ]
+}

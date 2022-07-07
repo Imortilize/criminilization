@@ -1,0 +1,6 @@
+ALTER TABLE `ranks` ADD COLUMN `R_refferalCash` INT(11) DEFAULT 0;
+ALTER TABLE `ranks` ADD COLUMN `R_refferalBullets` INT(11) DEFAULT 0;
+ALTER TABLE `ranks` ADD COLUMN `R_refferalItem` INT(11) DEFAULT 0;
+ALTER TABLE `ranks` ADD COLUMN `R_refferalPoints` INT(11) DEFAULT 0;
+
+ALTER TABLE `users` ADD COLUMN `U_referral` INT(11) DEFAULT 0;

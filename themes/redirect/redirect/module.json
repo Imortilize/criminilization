@@ -1,0 +1,12 @@
+{
+    "name": "Redirect",
+    "version": "1.0.0",
+    "description": "This mod will redirect a user to the last oage they was on if they are logged out..",
+    "author": {
+        "name": "William Hughes",
+        "url": "http:\/\/comingsoon.xom"
+    },
+    "pageName": "Redirect",
+    "accessInJail": true,
+    "requireLogin": false
+}

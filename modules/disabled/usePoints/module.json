@@ -1,0 +1,19 @@
+{
+    "name": "Spend Points",
+    "version": "1.0.0",
+    "description": "This module allows a user to spend their points.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Points Store",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Points",
+    "admin": [
+        {
+            "text": "Settings",
+            "method": "settings"
+        }
+    ]
+}

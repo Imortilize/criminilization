@@ -1,0 +1,143 @@
+.module-panel-Auction.House form {
+    margin-bottom: 10px;
+}
+
+.module-panel-Auction.House form:nth-last-child(1) {
+    margin-bottom: 0px;
+}
+
+.crime-holder.heading {
+    background-color: transparent;
+    margin-bottom: 5px;
+    border: none;
+}
+.crime-holder.heading * {
+    line-height: 1 !important;
+    padding-bottom: 0px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.crime-holder p.text-left {
+    text-align: left;
+}
+
+.action {
+    padding-left: 20px;
+}
+
+.action:nth-child(1) {
+    padding-left: 0px;
+}
+
+.action.seller {
+    width: 130px !important;
+    padding: 0px 5px !important;
+}
+
+.action.seller,
+.crime-holder .cooldown {
+    width: 120px;
+    display: inline-block;
+    padding-right: 10px;
+}
+.cooldown.bidder {
+    width: 145px;
+}
+
+.cooldown .bid {
+    margin-bottom: 0px;
+}
+
+.action.time {
+    width: 100px;
+    text-align: left;
+}
+    
+.cooldown.time-left {
+    width: 60px;
+}
+
+.cooldown.buttons {
+    width: 240px;
+    text-align: right;
+    padding-right: 0px; 
+}
+
+.cooldown.buttons form {
+    display: inline-block;
+}
+
+.cooldown.buttons form {
+    display: inline-block;
+}
+
+.cooldown.buttons .btn {
+    margin-bottom: 0px;
+    font-size: 12px;
+}
+.cooldown.buttons .btn:nth-child(1) {
+    width: 120px;
+}
+
+.action.seller,
+.cooldown.current-bid,
+.cooldown.bidder {
+    text-align: left;
+}
+
+.crime-holder .cooldown .form-control {
+    width: 80px;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    padding: 0px 3px;
+    line-height: 22px;
+    height: auto;
+}
+.crime-holder .game-icon-position-marker {
+    vertical-align: middle;
+    float: right;
+}
+
+.small-padding {
+    padding: 5px !important;
+}
+
+@media (max-width: 767px) {
+
+    .module-panel-Auction.House h4 {
+        font-size: 0px;
+    }
+    .module-panel-Auction.House h4 small {
+        font-size: 12px;
+        display: block;
+        float: none !important;
+        text-align: center;
+    }
+
+    .module-panel-Auction.House .crime-holder.heading {
+        display: none;
+    }
+    .module-panel-Auction.House .crime-holder p {
+        line-height: 15px;
+    }
+    .module-panel-Auction.House .crime-holder .cooldown,
+    .module-panel-Auction.House .crime-holder .action {
+        width: 50% !important;
+        display: block;
+        float: left;
+        padding: 5px;
+    }
+    .module-panel-Auction.House .crime-holder .cooldown.current-bid,
+    .module-panel-Auction.House .crime-holder .action.seller {
+        text-align: right;
+    }
+    .module-panel-Auction.House .crime-holder .cooldown.buttons {
+        width: 100% !important;
+    }
+    .module-panel-Auction.House .crime-holder .cooldown.buttons a.btn {
+        float: left;
+    }
+
+}

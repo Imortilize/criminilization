@@ -1,0 +1,5 @@
+.fixed-width.cooldown {
+	width: 120px;
+	text-align: left;
+	display: inline-block;
+}

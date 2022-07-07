@@ -1,0 +1,26 @@
+.user-online {
+	display: inline-block;
+	width: 280px;
+	border:  1px solid rgba(150, 150, 150, 0.2);
+	background-color:  rgba(150, 150, 150, 0.1);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.user-online-avatar {
+	background-color:  #000;
+	height: 60px;
+	width: 60px;
+	float: left;
+}
+.user-online-info {
+	width: calc(100% - 60px);
+	padding-left: 5px;
+	float: right;
+	text-align: left;
+}
+
+.user-online-button {
+	padding: 0px 10px;
+	line-height: 20px;
+}

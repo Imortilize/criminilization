@@ -1,0 +1,33 @@
+{
+  "name": "Tutorial",
+  "version": "1.0.0",
+  "description": "This module allows admin to add a tutorial for each module",
+  "author": {
+    "name": "Ali Harb",
+    "email": "harbzali@gmail.com"
+  },
+  "pageName": "Tutorial",
+  "accessInJail": false,
+  "requireLogin": true,
+  "adminGroup": "Pages",
+  "admin": [
+    {
+      "text": "View tutorials",
+      "method": "view"
+    },
+    {
+      "text": "New tutorial",
+      "method": "new"
+    },
+    {
+      "hide": true,
+      "text": "Edit tutorial",
+      "method": "edit"
+    },
+    {
+      "hide": true,
+      "text": "Delete tutorial",
+      "method": "delete"
+    }
+  ]
+}

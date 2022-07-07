@@ -1,0 +1,41 @@
+{
+    "name": "Points Purchase",
+    "version": "1.0.0",
+    "description": "This module allows a user to buy points for money.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Packages",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Points",
+    "admin": [
+        {
+            "text": "View Packages",
+            "method": "view"
+        },
+        {
+            "text": "New Package",
+            "method": "new"
+        },
+        {
+            "text": "Settings",
+            "method": "settings"
+        },
+        {
+            "text": "Transactions",
+            "method": "transactions"
+        },
+        {
+            "hide": true,
+            "text": "Edit Package",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Package",
+            "method": "delete"
+        }
+    ]
+}

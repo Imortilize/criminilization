@@ -1,0 +1,19 @@
+{
+    "name": "Russian Roulette",
+    "version": "1.0.0",
+    "description": "This module allows a user to play russian roulette",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Russian Roulette",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "Options",
+            "method": "options"
+        }
+    ]
+}

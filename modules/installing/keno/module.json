@@ -1,0 +1,12 @@
+{
+    "name": "Keno",
+    "version": "1.0.0",
+    "description": "The casino game keno",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Keno",
+    "accessInJail": true,
+    "requireLogin": true
+}

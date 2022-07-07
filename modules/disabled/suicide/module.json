@@ -1,0 +1,12 @@
+{
+    "name": "Commit Suicide",
+    "version": "1.0.0",
+    "description": "This module allows a user to commit suicide",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Commit Suicide",
+    "accessInJail": true,
+    "requireLogin": true
+}

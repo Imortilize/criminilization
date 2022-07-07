@@ -1,0 +1,10 @@
+{
+    "name": "Dark Streets", 
+    "version": "1.0.0", 
+    "description": "Fully responsive Dark theme.",
+    "themeType": "game",
+    "author": {
+        "name": "PHPkiller", 
+        "url": "https://phpkiller.me"
+    }
+}

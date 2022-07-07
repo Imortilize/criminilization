@@ -1,0 +1,33 @@
+{
+    "name": "Gang Businesses",
+    "version": "1.0.0",
+    "description": "This module allows a gang member to own bsinesses and collect the money.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Gang Businesses",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "View Businesses",
+            "method": "view"
+        },
+        {
+            "text": "New Business",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Business",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Business",
+            "method": "delete"
+        }
+    ]
+}

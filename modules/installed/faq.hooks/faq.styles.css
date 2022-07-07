@@ -1,0 +1,114 @@
+.p-0 {
+    padding: 0 !important;
+}
+.p-10 {
+    padding: 10px !important;
+}
+.faqlink_wraper{
+	width:100%;
+	position:relative;
+    background: rgba(0, 0, 0, 0.5);
+    border: 0px solid rgba(0, 0, 0, .9);
+    padding: 0;
+}
+.faqlink_wraper > a{
+	color:#000;
+	position: absolute;
+    background: rgba(255, 255, 255, .4);
+    padding: 2px 0;
+    right: 0;
+	width: 40px;
+	border-radius:0 0 0 5px;
+}
+.faqlink_wraper > a:active,
+.faqlink_wraper > a:focus,
+.faqlink_wraper > a:hover{
+    background: rgba(255, 255, 255, .5);
+    text-decoration: none;
+}
+.faqlink_wraper > textarea{
+	margin: 0;
+	padding: 0;
+    background: transparent;
+	border:none;
+	outline: none;
+	padding:5px 10px !important;
+	color: #666;
+    word-break: break-all;
+    text-align: left;
+	width:100%;
+	height: 30px;
+    font-size: 11px;
+    resize: none;
+    vertical-align: middle;
+}
+
+
+.alive {
+    color: #2f7b00;
+	float: right;
+}
+.dead {
+    color: #a50808;
+	float: right;
+}
+.p-0 {
+    padding: 0 !important;
+}
+.p-10 {
+    padding: 10px !important;
+}
+.text-right{
+	text-align:right !important;
+}
+
+.list li:last-of-type{
+    border-bottom:none;
+}
+
+.list{
+    padding:0;
+    margin:0;
+	list-style:none;
+}
+.list li{
+    border-bottom:1px solid rgba(255,255,255,.15);
+    cursor:pointer;
+	display: flex;
+}
+.list .bg{
+	flex:1;
+    box-shadow: inset 0 0 8px 3px rgba(0,0,0,0.3);
+    min-height: 30px;
+    width: 40px;
+    max-width: 40px;
+    border:3px solid rgba(0,0,0,.4);
+}
+.list .logo{
+	flex:1;
+    min-width: 63px;
+    max-width: 63px;
+    min-height: 33px;
+    max-height: 33px;
+	padding:0;
+}
+.list .text {
+	flex:1;
+    box-shadow: inset 0 0 8px 1px rgba(0,0,0,0.3);
+    background: rgba(51, 51, 51, 0.6);
+    min-height: 30px;
+    text-align:left;
+    padding: 4px 0 4px 15px;
+}
+.list .text.gangs{
+	min-height: 33px;
+    padding: 4px 0 4px 15px;
+	border-left:none;
+}
+.list .text span{
+    text-align:left;
+    text-shadow: 0 1px 0 #000;
+}
+.list .text i{
+    margin-right:5px;
+}

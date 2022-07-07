@@ -1,0 +1,14 @@
+{
+    "name": "Marriage",
+    "version": "1.0.0",
+    "description": "This module allows people to get married",
+    "author": {
+        "name": "Chris Day",
+        "url": "https:\/\/cdcoding.com"
+    },
+    "pageName": "Marriage",
+    "moduleCantBeDisabled": false,
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": ""
+}

@@ -1,0 +1,172 @@
+.place-bet input {
+    width: 150px;
+}
+
+.roulette-table table {
+    width: 300px;
+    margin: auto; 
+}
+.bg-green {
+    background-color: #004400 !important;
+}
+.roulette-table table td {
+    background-color: #004400 !important;
+    color: #fff;
+    padding: 0px;
+    font-size: 12px;
+    border-color: transparent;
+}
+
+.roulette-table .table-bordered>tbody>tr>td  {
+    border-color: #dedede !important;
+}
+
+.roulette-table .table-bordered>tbody>tr>td.blank:nth-child(1) {
+    border-top-color: transparent !important;
+    border-left-color: transparent !important;
+}
+
+.roulette-table .table-bordered>tbody>tr:nth-child(14)>td.blank {
+    border-bottom-color: transparent !important;
+    border-left-color: transparent !important;
+}
+
+.roulette-table table td.blank {
+    background-color: transparent !important;
+}
+
+table td.bg-green a,
+.roulette-table table td a {
+    display: inline-block;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 50%;
+    min-width: 35px;
+    color: #fff;
+}
+
+table td.red a {
+    background-color: #660000;
+}
+
+table td.black a {
+    background-color: #000;
+}
+
+.roulette-table table td {
+    text-align: center;
+}
+
+.roulette-table .vertical {
+    vertical-align: middle;
+    width: 25px;
+}
+
+.roulette-table .vertical a {
+    overflow: hidden;
+    display: inline-block;
+    width: 100% !important;
+    text-align:center;
+    white-space:nowrap;
+    transform-origin:50% 50%;
+    transform: rotate(90deg);
+}
+
+.roulette-table .vertical a:before {
+    content:'';
+    padding-top:110%;/* takes width as reference, + 10% for faking some extra padding */
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.bet-on,
+.has-bet {
+    position: relative;
+    text-align: center;
+}
+
+.bet-on:after {
+    background-color: #008cff;
+}
+
+.has-bet:after {
+    background-color: #d500ff;
+}
+
+.has-bet.bet-on:after {
+    background-color: #b7861f;
+}
+
+.bet-on:after,
+.has-bet:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    margin-top: -14px;
+    margin-left: -20px;
+    height: 15px !important;
+    width: 15px !important;
+    border-radius: 50%;
+    content: "";
+    border: 2px dotted #fff;
+}
+
+.roulette-table .vertical .has-bet:after {
+    margin-top: 2px;
+
+}
+
+.bets h3 {
+    margin-top: 0px;
+}
+
+.key {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+    
+.key .col-xs-4 {
+    padding-left: 35px;
+    padding-right: 0px;
+    text-align: left;
+}
+    
+.key .col-xs-4:after {
+    left: 35px;
+    top: 13px;
+}
+
+.current-bets .has-bet:after {
+    display: none;
+}
+
+.current-bets td:not(.has-bet) {
+    line-height: 30px;
+}
+
+.won {
+    color: #06c536;
+}
+.lost {
+    color: #c50606;
+}
+
+.current-bets .table-bordered>tbody>tr>td.landed,
+.roulette-table .table-bordered>tbody>tr>td.landed {
+    background-color: #fff !important;
+}
+
+.roulette-table .table-bordered>tbody>tr>td.landed.zero a {
+    color: #000 !important 
+}
+
+.current-bets .table-bordered>tbody>tr>td.lost,
+.roulette-table .table-bordered>tbody>tr>td.lost {
+    background-color: #c50606 !important;
+}
+
+.current-bets .table-bordered>tbody>tr>td.won,
+.roulette-table .table-bordered>tbody>tr>td.won {
+    background-color: #06c536 !important;
+}

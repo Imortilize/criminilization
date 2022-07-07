@@ -1,0 +1,1 @@
+ALTER TABLE `userStats` ADD COLUMN `US_married` INT(11) NOT NULL DEFAULT 0;

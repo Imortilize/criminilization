@@ -1,0 +1,19 @@
+{
+    "name": "Workout",
+    "version": "1.0.0",
+    "description": "This module allows a user to workout and strain their stats, this is very similar to the McCodes v1 Gym.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Workout",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "Options",
+            "method": "options"
+        }
+    ]
+}

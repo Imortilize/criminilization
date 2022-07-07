@@ -1,0 +1,24 @@
+{
+    "name": "IP Tracking",
+    "version": "1.0.0",
+    "description": "This module tracks users IP addresses",
+    "author": {
+        "name": "Chris Day",
+        "url": "https:\/\/cdcoding.com"
+    },
+    "pageName": "IP Tracking",
+    "moduleCantBeDisabled": false,
+    "accessInJail": false,
+    "requireLogin": false,
+    "adminGroup": "User Management",
+    "admin": [
+        {
+            "text": "User IPs",
+            "method": "users"
+        }, {
+            "text": "IP Tracking Logs",
+            "method": "logs", 
+            "hide": true
+        }
+    ]
+}

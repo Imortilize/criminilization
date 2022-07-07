@@ -1,0 +1,12 @@
+{
+    "name": "Users Online",
+    "version": "1.0.0",
+    "description": "",
+    "author": {
+        "name": "NIF",
+        "url": "https:\/\/makewebgames.io\/profile\/29968-nif\/"
+    },
+    "pageName": "Users Online",
+    "accessInJail": true,
+    "requireLogin": true
+}

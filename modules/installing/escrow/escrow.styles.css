@@ -1,0 +1,16 @@
+.escrow-item form {
+	margin-bottom: 0px;
+}
+
+.escrow-item p {
+	padding: 5px;
+}
+
+.escrow-item p .action {
+	line-height: 36px;
+	padding-left: 5px;
+}
+
+.escrow-item .form-control-inline {
+	width: 150px;
+}

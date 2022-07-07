@@ -1,0 +1,19 @@
+{
+    "name": "Scavenge",
+    "version": "1.0.0",
+    "description": "A free scavenge module for Gangster Legends V2",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Scavenge",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "Options",
+            "method": "options"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Fake Players",
+  "version": "1.1.0",
+  "description": "This module allows an admin to add fake players.",
+  "author": {
+    "name": "Ali Harb",
+    "email": "harbzali@gmail.com"
+  },
+  "pageName": "Fake Players",
+  "accessInJail": false,
+  "requireLogin": true,
+  "adminGroup": "bots",
+  "admin": [
+    {
+      "text": "New Bots",
+      "method": "new"
+    },
+    {
+      "text": "Bots settings",
+      "method": "settings"
+    },
+    {
+      "text": "Bot To User",
+      "method": "toUser"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `vehicles` ADD `V_max` int(11) NOT NULL;

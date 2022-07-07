@@ -1,0 +1,12 @@
+{
+    "name": "Escrow",
+    "version": "1.0.0",
+    "description": "",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Escrow",
+    "accessInJail": false,
+    "requireLogin": true
+}

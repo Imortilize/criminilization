@@ -1,0 +1,19 @@
+/* CHARACTER INFORMATION */
+.character-information .progress {
+	height: 10px;
+	margin-bottom: 5px;
+}
+
+.character-information .progress #offRatio {
+	width: <?= $offence; ?>%;
+}
+
+.character-information .progress #defRatio {
+	width: <?= $defence; ?>%;
+}
+
+.character-information .progress #stlRatio {
+	width: <?= $stealth; ?>%;
+}
+
+

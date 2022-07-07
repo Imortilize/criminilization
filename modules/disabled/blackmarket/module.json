@@ -1,0 +1,12 @@
+{
+    "name": "Black Market",
+    "version": "1.0.0",
+    "description": "This module allows the user to buy weapons and armor.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Black Market",
+    "accessInJail": false,
+    "requireLogin": true
+}

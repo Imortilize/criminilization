@@ -1,0 +1,33 @@
+{
+    "name": "Stock Market",
+    "version": "1.0.0",
+    "description": "",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Stock Market",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "View Stocks",
+            "method": "view"
+        },
+        {
+            "text": "Add Stock",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Stock",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Stock",
+            "method": "delete"
+        }
+    ]
+}

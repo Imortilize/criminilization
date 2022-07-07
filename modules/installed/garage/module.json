@@ -1,0 +1,19 @@
+{
+    "name": "Garage",
+    "version": "1.0.1",
+    "description": "This module is a more advanced version of the default garage, allowing users to apply an action to multiple cars at once!",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Garage",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Vehicles",
+    "admin": [
+        {
+            "text": "Options",
+            "method": "options"
+        }
+    ]
+}

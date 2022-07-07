@@ -1,0 +1,1 @@
+ALTER TABLE `cars` ADD COLUMN `CA_points` INT(11) DEFAULT 0; 

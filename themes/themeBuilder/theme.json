@@ -1,0 +1,10 @@
+{
+    "name": "Criminilization - Theme", 
+    "version": "0.0.1", 
+    "description": "First basic theme for Criminilization",
+    "themeType": "game",
+    "author": {
+        "name": "Dominic Brittain", 
+        "url": "https://beta.criminalization.net/"
+    }
+}

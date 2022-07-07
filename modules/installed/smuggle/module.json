@@ -1,0 +1,33 @@
+{
+    "name": "Smuggle",
+    "version": "1.0.0",
+    "description": "Allows users to smuggle items between locations",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Smuggle",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "View Items",
+            "method": "view"
+        },
+        {
+            "text": "Add Item",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Item",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Item",
+            "method": "delete"
+        }
+    ]
+}

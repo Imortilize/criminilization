@@ -1,0 +1,102 @@
+.crime {
+	display: inline-block;
+	width: 200px;
+	margin: 5px; 
+	position: relative;
+}
+
+.crime .btn.btn-primary {
+	margin-bottom: 0px;
+}
+	
+.crime .panel-body {
+	padding: 5px;
+}
+
+.crime .panel-heading {
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.panel-feature .btn {
+	margin: 5px;
+}
+
+.panel-feature .tag {
+	float: left;
+	margin: 5px;
+	padding: 1px 5px;
+	background-color: #505050;
+    border: #292929 1px solid;
+	color: #fff; 
+	border-radius: 3px;
+}
+	
+.crime .progress {
+	border-radius: 0px;
+	border-right: none;
+	border-left: none;
+	padding: 0px;
+	height: 6px;
+	margin-bottom: 0px;
+	background-color: #3a0d0d;
+}
+	
+.crime .progress .progress-bar {
+	border-radius: 0px;
+}
+
+.crime .panel-body .col-xs-6 {
+	line-height: 26px;
+}
+
+.locked {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background: rgba(0, 0, 0, 0.95);
+	color: #eee;
+	text-align: center;
+	z-index: 1000;
+	border-radius: 4px;
+	padding-top: 25px;
+}
+
+.locked .game-icon {
+	font-size: 54px;
+}
+
+@media (max-width: 767px) {
+
+	.crime {
+		width: 100%;
+	}
+	.crime .panel-heading {
+		height: auto;
+	}
+	.panel-feature {
+		height: 45px;
+		width: 90px;
+		float: left;
+	}
+	.crime .panel-body {
+		float: right;
+		width: calc(100% - 90px);
+	}
+	.crime .panel-body .row {
+		margin-top: 5px;
+	}
+
+	.locked {
+		padding-top: 5px;
+	}
+
+	.locked .game-icon {
+		float: left;
+	}
+
+}

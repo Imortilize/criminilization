@@ -1,0 +1,19 @@
+{
+    "name": "Level Generator",
+    "version": "1.0.0",
+    "description": "This module allows a user to easily generate levels for their game.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Level Generator",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "User Management",
+    "admin": [
+        {
+            "text": "Level Options",
+            "method": "options"
+        }
+    ]
+}

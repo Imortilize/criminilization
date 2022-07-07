@@ -1,0 +1,16 @@
+/* LAYOUT */
+.game-container {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 50px;
+}
+
+.side-bar {
+	width: 300px;
+	padding:  0px 5px;
+}
+
+.game-area {
+	flex-grow: 1;
+	padding:  0px 0px;
+}

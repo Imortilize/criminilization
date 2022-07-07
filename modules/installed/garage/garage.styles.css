@@ -1,0 +1,17 @@
+.garage-cars .crime-holder input[type="checkbox"] {
+    margin: 0px;
+    vertical-align: middle;
+}
+.garage-cars .crime-holder .cooldown.cost {
+    width: 90px;
+    display: inline-block;
+}
+.garage-cars .crime-holder .cooldown.select {
+    padding-right: 5px;
+}
+
+.item {
+    height: 28px;
+    max-width: 60px;
+    padding: 2px;
+}

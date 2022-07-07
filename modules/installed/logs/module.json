@@ -1,0 +1,19 @@
+{
+  "name": "Game Logs",
+  "version": "1.0.0",
+  "description": "This module allows an admin to see the users actions.",
+  "author": {
+    "name": "Ali Harb",
+    "url": "harbzali@gmail.com"
+  },
+  "pageName": "Game Logs",
+  "accessInJail": false,
+  "requireLogin": true,
+  "adminGroup": "Pages",
+  "admin": [
+    {
+      "text": "Logs",
+      "method": "view"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+    "name": "Skills",
+    "version": "1.0.0",
+    "description": "This module allows new stats amd skills to be added to the game. It will allow game owners to access these stats or skills without any code edits.",
+    "author": {
+        "name": "William Hughes",
+        "url": "http:\/\/comingsoon.com"
+    },
+    "pageName": "Skills",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "Skills",
+            "method": "view"
+        },
+        {
+            "text": "New Skill",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Edit Skill",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete Skill",
+            "method": "delete"
+        }
+    ]
+}

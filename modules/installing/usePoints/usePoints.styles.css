@@ -1,0 +1,9 @@
+.crime-holder .form-control {
+    display: inline-block;
+    margin-bottom: 0px;
+    width: 80px;
+}
+
+.crime-holder .action {
+    line-height: 34px;
+}

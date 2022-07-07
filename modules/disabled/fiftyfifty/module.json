@@ -1,0 +1,12 @@
+{
+    "name": "FiftyFifty",
+    "version": "1.0.0",
+    "description": "Simple game where you bet your money and have a 50/50 chance of winning",
+    "author": {
+        "name": "Adam Hull",
+        "url": "foggymidget.website"
+    },
+    "pageName": "FiftyFifty",
+    "accessInJail": false,
+    "requireLogin": true
+}

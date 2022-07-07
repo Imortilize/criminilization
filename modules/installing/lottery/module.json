@@ -1,0 +1,19 @@
+{
+    "name": "Lottery",
+    "version": "1.0.0",
+    "description": "Game lottery",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Lottery",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Lottery",
+    "admin": [
+        {
+            "text": "Options",
+            "method": "options"
+        }
+    ]
+}

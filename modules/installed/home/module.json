@@ -1,0 +1,21 @@
+{
+    "name": "Home Page",
+    "version": "1.0.0",
+    "description": "A new home page for your game rather then the default login screen.",
+    "author": {
+        "name": "NIF",
+        "url": "https:\/\/makewebgames.io\/profile\/29968-nif\/"
+    },
+    "pageName": "Home Page",
+    "moduleCantBeDisabled": false,
+    "accessInJail": false,
+    "requireLogin": false,
+    "adminGroup": "Pages",
+    "admin": [
+        {
+            "text": "Settings",
+            "method": "settings",
+            "hide": false
+        }
+    ]
+}

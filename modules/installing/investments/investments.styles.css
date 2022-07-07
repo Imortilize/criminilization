@@ -1,0 +1,34 @@
+.crime-holder .cooldown.min,
+.crime-holder .cooldown.max {
+	text-align: left;
+	display: inline-block;
+	width: 60px;
+	padding-right: 5px;
+}
+
+.crime-holder .cooldown.time,
+.crime-holder .cooldown.maxInvest {
+	display: inline-block;
+	width: 125px;
+	padding-right: 5px;
+}
+
+.crime-holder .cooldown.time {
+	text-align: left;
+	width: 100px;
+	margin-left: 25px;
+}
+
+.crime-holder.transparent {
+	background-color: transparent;
+	border: none;
+}
+
+.crime-holder.transparent p {
+	font-weight: bold;
+	line-height: 18px;
+}
+
+.crime-holder.transparent .cooldown.min {
+	width: 120px;
+}

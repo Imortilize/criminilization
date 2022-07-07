@@ -1,0 +1,37 @@
+{
+    "name": "Organized Crime",
+    "version": "1.0.0",
+    "description": "This module allows a user to create or join a multi player Organized crime.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Organized Crime",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Organized Crime",
+    "admin": [
+        {
+            "text": "View OC",
+            "method": "view"
+        },
+        {
+            "text": "New OC",
+            "method": "new"
+        },
+        {
+            "text": "OC Options",
+            "method": "options"
+        },
+        {
+            "hide": true,
+            "text": "Edit OC",
+            "method": "edit"
+        },
+        {
+            "hide": true,
+            "text": "Delete OC",
+            "method": "delete"
+        }
+    ]
+}

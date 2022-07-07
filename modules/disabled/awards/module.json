@@ -1,0 +1,33 @@
+{
+    "name": "Awards",
+    "version": "1.0.1",
+    "description": "Award module for users",
+	"author": {
+        "name": "URB4NZ",
+        "url": "https://makewebgames.io/profile/14112-urbanmafia/"
+    },
+    "pageName": "Awards",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Game Mechanics",
+    "admin": [
+        {
+            "text": "Awards",
+            "method": "viewAward"
+        },
+        {
+            "text": "New Award",
+            "method": "newAward"
+        },
+        {
+            "hide": true,
+            "text": "Edit Award",
+            "method": "editAward"
+        },
+        {
+            "hide": true,
+            "text": "Delete Award",
+            "method": "deleteAward"
+        }
+    ]
+}

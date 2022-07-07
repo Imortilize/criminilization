@@ -1,0 +1,12 @@
+{
+    "name": "Auction House",
+    "version": "1.0.0",
+    "description": "A place where people can auction off their items for cash",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Auction House",
+    "accessInJail": false,
+    "requireLogin": true
+}

@@ -1,0 +1,14 @@
+{
+    "name": "GDPR",
+    "version": "1.0.1",
+    "description": "This enables the GDPR notice",
+    "author": {
+        "name": "NIF",
+        "url": "https:\/\/makewebgames.io\/profile\/29968-nif\/"
+    },
+    "pageName": "GDPR",
+    "moduleCantBeDisabled": false,
+    "accessInJail": false,
+    "requireLogin": false,
+    "adminGroup": ""
+}

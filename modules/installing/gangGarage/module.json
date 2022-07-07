@@ -1,0 +1,12 @@
+{
+    "name": "Gang Garage",
+    "version": "1.0.0",
+    "description": "This module allows a user to transfer cars to their gang",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "gang Garage",
+    "accessInJail": false,
+    "requireLogin": true
+}

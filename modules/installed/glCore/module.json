@@ -1,0 +1,12 @@
+{
+    "name": "Criminilization Core Engine",
+    "version": "0.0.1",
+    "description": "A free to play mafia MMORPG text game.",
+    "author": {
+        "name": "Criminilization Team",
+        "url": "https:\/\/beta.criminalization.net/"
+    },
+    "pageName": "Criminilization Engine",
+    "accessInJail": true,
+    "requireLogin": true
+}

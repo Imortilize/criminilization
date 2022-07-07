@@ -1,0 +1,28 @@
+{
+    "name": "Daily Login Bonus",
+    "version": "1.0.0",
+    "description": "This module gives people a reward for consecutive daily logins ",
+    "author": {
+        "name": "William Hughes",
+        "url": "http:\/\/comingsoon.com"
+    },
+    "pageName": "Daily Rewards",
+    "accessInJail": false,
+    "requireLogin": true,
+    "adminGroup": "Events",
+    "admin": [
+        {
+            "text": "Daily Consecutive Rewards",
+            "method": "view"
+        },
+        {
+            "text": "New Reward",
+            "method": "new"
+        },
+        {
+            "hide": true,
+            "text": "Delete Reward",
+            "method": "delete"
+        }
+    ]
+}

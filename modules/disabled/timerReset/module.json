@@ -1,0 +1,19 @@
+{
+    "name": "Reset Timers",
+    "version": "1.0.0",
+    "description": "This module allows a user to spend their points to reset game timers.",
+    "author": {
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.cdcoding.com"
+    },
+    "pageName": "Timer Reset Costs",
+    "accessInJail": true,
+    "requireLogin": true,
+    "adminGroup": "Points",
+    "admin": [
+        {
+            "text": "Settings",
+            "method": "settings"
+        }
+    ]
+}

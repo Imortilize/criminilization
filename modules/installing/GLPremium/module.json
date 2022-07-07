@@ -1,0 +1,39 @@
+{ 
+    "bundle": true,
+    "name": "Gangster Legends Premium",
+    "version": "1.0.0",
+    "description": "A collection of premium modules used to expand the original GL Premium software",
+    "author": { 
+        "name": "Chris Day",
+        "url": "http:\/\/glscript.net\/premium\/"
+    }, 
+    "modules": [
+        "auctionHouse",
+        "cars",
+        "crimes",
+        "facebook",
+        "gangBusiness",
+        "gangCrimes",
+        "gangGarage",
+        "garage",
+        "investments",
+        "keno",
+        "locations",
+        "lottery",
+        "organizedCrime",
+        "points",
+        "policeChase",
+        "referral",
+        "roulette",
+        "scavenge",
+        "shoutbox",
+        "smuggle",
+        "stocks",
+        "suicide",
+        "theft",
+        "timerReset",
+        "travel",
+        "usePoints",
+        "workout"
+    ]
+}

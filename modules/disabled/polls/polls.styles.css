@@ -1,0 +1,18 @@
+/**
+* This allows you to create polls for your users to vote on
+*
+* package: Polls
+* author: Chris Day
+* version: 1.0.0
+*/
+
+.list-group-item .progress {
+	margin-bottom: 0px;
+	position: relative;
+}
+
+.overlay {
+	position: absolute;
+	right: 5px;
+	top:  1px;
+}
