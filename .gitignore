@@ -1,2 +1,5 @@
 ## Ignore the config file as it differs between environments
 config.php
+
+## Ignore the error logs
+logs/
