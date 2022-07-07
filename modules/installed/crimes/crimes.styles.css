@@ -6,6 +6,10 @@
 	--failure-color: 255, 26, 26;
 	--money-gained-color: 0, 255, 0;
 	--cooldown-color: 135, 206, 250;
+	--offence-color: 238, 95, 91;
+	--defence-color: 91, 192, 222;
+	--stealth-color: 98, 196, 98;
+	--mixed-color: 255, 214, 51;
 }
 
 /* CRIME PANEL */
@@ -39,6 +43,17 @@
 
 .crime-panel-body {
 	padding: 0px 15px 15px 15px;  
+	background-image: url('/themes/themeBuilder/images/dark-circles.png');
+}
+
+.crime-panel-background {
+	position: relative;
+    margin-bottom: 0px;
+	padding: 5px;  
+    background-color: var(--gray-lighter);
+    border: 1px solid transparent;
+	border-radius: 4px;
+	border-color: rgba(0,0,0,0.3);
 	background-image: url('/themes/themeBuilder/images/dark-circles.png');
 }
 
@@ -102,34 +117,32 @@
 	border-bottom: 1px solid var(--gray);
 }
 
-.crime-header-holder .crime-header {
+.crime-header-holder .crime-indicator-header {
 	margin: auto;
 	justify-content: flex-start;
 	flex-grow: 1;
 	order:  1;
-	width: 65%;
-	min-width: 65%;
-	max-width: 65%;
+	width: 5%;
+	min-width: 5%;
+	max-width: 5%;
+}
+
+.crime-header-holder .crime-header {
+	margin: auto;
+	justify-content: flex-start;
+	flex-grow: 1;
+	order:  2;
+	width: 60%;
+	min-width: 60%;
+	max-width: 60%;
 	text-align: left;
 	text-indent: 10%;
 	font-weight: bold;
+	border-left: 1px solid var(--gray);
 	border-right: 1px solid var(--gray);
 }
 
 .crime-header-holder .stat-distribution-header {
-	margin: auto;
-	justify-content: flex-end;
-	flex-grow: 1;
-	order:  2;
-	width: 15%;
-	min-width: 15%;
-	max-width: 15%;
-	text-align: center;
-	font-weight: bold;
-	border-right: 1px solid var(--gray);
-}
-
-.crime-header-holder .bonus-distribution-header {
 	margin: auto;
 	justify-content: flex-end;
 	flex-grow: 1;
@@ -142,11 +155,24 @@
 	border-right: 1px solid var(--gray);
 }
 
-.crime-header-holder .select-crime-header {
+.crime-header-holder .bonus-distribution-header {
 	margin: auto;
 	justify-content: flex-end;
 	flex-grow: 1;
 	order:  4;
+	width: 15%;
+	min-width: 15%;
+	max-width: 15%;
+	text-align: center;
+	font-weight: bold;
+	border-right: 1px solid var(--gray);
+}
+
+.crime-header-holder .select-crime-header {
+	margin: auto;
+	justify-content: flex-end;
+	flex-grow: 1;
+	order:  5;
 	width: 5%;
 	min-width: 5%;
 	max-width: 5%;
@@ -164,17 +190,6 @@
     margin-bottom: 0px;
 	overflow: hidden;
     padding: 5px 0px 5px 0px;  
-}
-
-.crime-holder-background {
-	position: relative;
-    margin-bottom: 0px;
-	padding: 5px;  
-    background-color: var(--gray-lighter);
-    border: 1px solid transparent;
-	border-radius: 4px;
-	border-color: rgba(0,0,0,0.3);
-	background-image: url('/themes/themeBuilder/images/dark-circles.png');
 }
 
 .crime-holder .crime-holder-container {
@@ -195,15 +210,47 @@
 	background-image: url('/themes/themeBuilder/images/arches.png');
 }
 
+.crime-holder .crime-indicator {
+	justify-content: flex-start;
+	flex-grow: 1;
+	order:  1;
+	width: 5%;
+	min-width: 5%;
+	max-width: 5%;
+	font-size: 1em;
+	text-align: center;
+	font-size: larger;
+	padding: 0px 5px 0px 5px;
+}
+
+.crime-holder .crime-indicator-container {
+	min-height: 100%;
+	min-width: 100%;
+    border: 3px ridge;
+	border-radius: 2px;
+	box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+}
+
+.crime-holder .crime-indicator-icon {
+	margin: auto;
+	font-size: small;
+	background-color: #565656;
+	color: transparent;
+	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+	-webkit-background-clip: text;
+    -moz-background-clip: text;
+	background-clip: text;
+}
+
 .crime-holder .crime-text {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: flex-start;
 	flex-grow: 1;
-	order:  1;
-	width: 65%;
-	min-width: 65%;
-	max-width: 65%;
+	order:  2;
+	width: 60%;
+	min-width: 60%;
+	max-width: 60%;
 	font-size: 0.95em;
 	padding-left: 3%;
 	border-right: 1px dashed var(--gray);
@@ -215,7 +262,7 @@
 	margin: auto;
 	justify-content: flex-end;
 	flex-grow: 1;
-	order:  2;
+	order:  3;
 	width: 15%;
 	min-width: 15%;
 	max-width: 15%;
@@ -262,7 +309,7 @@
 	margin: auto;
 	justify-content: flex-end;
 	flex-grow: 1;
-	order:  3;
+	order:  4;
 	width: 15%;
 	min-width: 15%;
 	max-width: 15%;
@@ -304,7 +351,7 @@
 	margin: auto;
 	justify-content: flex-end;
 	align-items: center;
-	order:  4;
+	order:  5;
 	width: 5%;
 	min-width: 5%;
 	max-width: 5%;

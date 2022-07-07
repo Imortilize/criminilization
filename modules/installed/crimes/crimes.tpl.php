@@ -38,9 +38,12 @@
 					<div class="crime-panel-heading">Crimes in {location}</div>
 				</div>
 				<div class="crime-panel-body">
-					<div class="crime-holder-background">
+					<div class="crime-panel-background">
 						<div class="crime-header-holder">
 							<p>
+                                <span class="crime-indicator-header">
+								</span> 
+
 								<span class="crime-header">
 									Crime
 								</span> 
@@ -61,6 +64,13 @@
 						{#each crimes}
 							<div class="crime-holder">
 								<div class="crime-holder-container">
+ 
+                                    <div class="crime-indicator"">
+                                        <div class="crime-indicator-container" style="background-color:{bonusColour};border-color:{bonusColour};">
+                                           <i class="fa {bonusIcon} crime-indicator-icon" style="color:{bonusColour}"></i>
+                                        </div>
+                                    </div> 
+
 									<div class="crime-text">
 										{name} 
 									</div> 
