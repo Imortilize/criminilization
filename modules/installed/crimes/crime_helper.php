@@ -1,9 +1,41 @@
 <?php
-	function calculateStats($totalStats, $offenceRatio, $defenceRatio, $stealthRatio) {
+	// Tags
+	const offenceTag = "offence";
+	const defenceTag = "defence";
+	const stealthTag = "stealth";
+	const mixedTag = "mixed";
+
+	// Magic Numbers
+	const bonusPercentageToApply = 0.1;
+
+	// Abbreviations
+	const offenceAbbreviation = "OFF";
+	const defenceAbbreviation = "DEF";
+	const stealthAbbreviation= "STL";
+
+	// Colours
+	const offenceColour = "#ee5f5b";
+	const defenceColour = "#5bc0de";
+	const stealthColour = "#62c462";
+	const mixedColour = "#ffd633";
+	
+	// Icons
+	const offenceIcon = "fa-radiation";
+	const defenceIcon = "fa-user-shield";
+	const stealthIcon = "fa-user-secret";
+
+	// Display encoding boundaries
+	const minimumBaseStatPercentage = 0.05;	// Minimum of 5%
+	const maximumBaseStatPercentage = 0.75;	// Maximum of 75%
+
+	/* Calculate the stats given the initial ratios and bonus to apply */
+	function calculateStats($totalStats, $offenceRatio, $defenceRatio, $stealthRatio, $bonus) {
 		$offence = floor($totalStats * ($offenceRatio * 0.01));
 		$defence = floor($totalStats * ($defenceRatio * 0.01));
 		$stealth = floor($totalStats * ($stealthRatio * 0.01));
-		
+
+		// Grab the stats as calculated and run some wizadry to make sure the base
+		// crime stats are correct to the original given total stats
 		$currentStatsToAward = ($offence + $defence + $stealth);
 		if ($currentStatsToAward != $totalStats) {
 
@@ -40,10 +72,32 @@
 				default: break;
 			}
 		}
+
+		// Now calculate the bonus and apply it to the stats to be awarded
+		switch ($bonus) {
+			case offenceTag: {
+				$offence = floor($offence + ($offence + bonusPercentageToApply));
+			} break;
+
+			case defenceTag: { 
+				$defence += floor($defence + ($defence + bonusPercentageToApply));
+			} break;
+				
+			case stealthTag: { 
+				$stealth += floor($stealth + ($stealth + bonusPercentageToApply));
+			} break;
+				
+			default: break;
+		}
+
+		// Add up the offence, defence and stealth to get the adjusted total stats after applying the bonus
+		$adjustedTotalStats = ($offence + $defence + $stealth);
 		
-		return [$offence, $defence, $stealth];
+		// Return these stats
+		return [$offence, $defence, $stealth, $adjustedTotalStats];
 	}
 
+	/* Calculate the stat distribution given the input crime */
 	function calculateStatDistribution($crime) {
 		// Grab the stats ratios and then figure out the stat distriubition
 		$totalStats = $crime->C_totalStats;
@@ -51,6 +105,12 @@
 		$defRatio = $crime->C_defenceRatio;
 		$stlRatio = $crime->C_stealthRatio;
 		$bonus = $crime->C_bonus;
+
+		// Grab the crime stats
+		[$offence,
+		 $defence,
+		 $stealth,
+		 $adjustedTotalStats] = calculateStats($totalStats, $offRatio, $defRatio, $stlRatio, $bonus);
 
 		// first lets see if it's a full mixed crime by determining the max difference
 		// between the 3 crime stat categories
@@ -66,7 +126,7 @@
 		// we determine it as a mixed crime
 		if ($maxDifference <= 5) {
 			// We determine this is a full mixed crime
-			$firstDistributionStat = "mixed";
+			$firstDistributionStat = mixedTag;
 			$secondDistributionStat = "";
 		} else
 		{
@@ -87,30 +147,30 @@
 			switch ($index) {
 				case 0: 
 					{ 
-						$firstDistributionStat = "offence";
+						$firstDistributionStat = offenceTag;
 
-						if ($defence > 0) {
-							$secondDistributionStat = "defence";
+						if ($offence > 0) {
+							$secondDistributionStat = defenceTag;
 						}
 					} 
 					break;
 
 				case 1: 
 					{ 
-						$firstDistributionStat = "offence";
+						$firstDistributionStat = offenceTag;
 
-						if ($stealth > 0) {
-							$secondDistributionStat = "stealth";
+						if ($defence > 0) {
+							$secondDistributionStat = stealthTag;
 						}
 					} 
 					break;
 
 				case 2: 
 					{ 
-						$firstDistributionStat = "defence";
+						$firstDistributionStat = defenceTag;
 
 						if ($stealth > 0) {
-							$secondDistributionStat = "stealth";
+							$secondDistributionStat = stealthTag;
 						}
 					} 
 					break;
@@ -119,67 +179,81 @@
 			}
 		}
 		
-		$offColour = "#ee5f5b";
-		$defColour = "#5bc0de";
-		$stlColour = "#62c462";
-		$mixedColour = "#ffd633";
+		$isMixed = ($firstDistributionStat == mixedTag);
+		$isOffence = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == ""));
+		$isDefence = (($firstDistributionStat == defenceTag) && ($secondDistributionStat == ""));
+		$isStealth = (($firstDistributionStat == stealthTag) && ($secondDistributionStat == ""));
+		$isOffDef = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == defenceTag));
+		$isOffStl = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == stealthTag));
+		$isDefStl = (($firstDistributionStat == defenceTag) && ($secondDistributionStat == stealthTag));
 		
-		$isMixed = ($firstDistributionStat == "mixed");
-		$isOffence = (($firstDistributionStat == "offence") && ($secondDistributionStat == ""));
-		$isDefence = (($firstDistributionStat == "defence") && ($secondDistributionStat == ""));
-		$isStealth = (($firstDistributionStat == "stealth") && ($secondDistributionStat == ""));
-		$isOffDef = (($firstDistributionStat == "offence") && ($secondDistributionStat == "defence"));
-		$isOffStl = (($firstDistributionStat == "offence") && ($secondDistributionStat == "stealth"));
-		$isDefStl = (($firstDistributionStat == "defence") && ($secondDistributionStat == "stealth"));
-		
-		// Grab the crime stats
-		[$offence,
-		 $defence,
-		 $stealth] = calculateStats($totalStats, $offRatio, $defRatio, $stlRatio);
-		
+		// Calculate the off/def/stl ratios
+		$baseStatPercentageDifference = (maximumBaseStatPercentage - minimumBaseStatPercentage);
+
 		// Calculate the true distribution spreads and cap these to a maximum of 90% per stat 
 		// and minimum of 5% per stats, to make sure we can see all 3 stats in the bars at all times, 
 		// even if it is 100% weighted into one crime (which it probably should never be)
-		$OffStatPercentage = clamp((($offence > 0) ? ($offence / $totalStats) : 0), 0.05, 0.9);
-		$DefStatPercentage = clamp((($defence > 0) ? ($defence / $totalStats) : 0), 0.05, 0.9);
-		$StlStatPercentage = clamp((($stealth > 0) ? ($stealth / $totalStats) : 0), 0.05, 0.9);
-		
+		$offStatRatio = ($offence / $adjustedTotalStats);
+		$offStatFactor = (minimumBaseStatPercentage + ($offStatRatio * $baseStatPercentageDifference));
+		$offStatPercentage = floor($offStatFactor * 100);
+
+		$defStatRatio = ($defence / $adjustedTotalStats);
+		$defStatFactor = (minimumBaseStatPercentage + ($defStatRatio * $baseStatPercentageDifference));
+		$defStatPercentage = floor($defStatFactor * 100);
+
+		$stlStatRatio = ($stealth / $adjustedTotalStats);
+		$stlStatFactor = (minimumBaseStatPercentage + ($stlStatRatio * $baseStatPercentageDifference));
+		$stlStatPercentage = floor($stlStatFactor * 100);
+
 		// Now that we have the true distributions, we want to factor this down to slide between 
 		// 0% -> 80% (as the last 20% we will reserve for indicating the bonus applied)
 		// We will then apply the final 20% as an indicator to what bonus is applied (if any)
-		$statBarBasePercentage = 80;
-		$statBarBonusPercentage = (100 - $statBarBasePercentage);
-		
-		$OffStatPercentage = floor($OffStatPercentage * $statBarBasePercentage);
-		$DefStatPercentage = floor($DefStatPercentage * $statBarBasePercentage);
-		$StlStatPercentage = floor($StlStatPercentage * $statBarBasePercentage);
-
-		// Test Change!
+		$statBarBonusPercentageDifference = (1 - maximumBaseStatPercentage);
 		
 		// Determine the bonus values to return
 		$bonusAbbreviation = "";
 		$bonusColour = "";
 		$bonusIcon = "";
-		$bonusRatio = 0;
+		$offStatBonusPercentage = 0;
+		$defStatBonusPercentage = 0;
+		$stlStatBonusPercentage = 0;
+
 		switch ($bonus) {
-			case "offence": {
-				$bonusAbbreviation = "OFF";
-				$bonusColour = $offColour; 
-				$bonusIcon = "fa-radiation";
+			case offenceTag: {
+				$bonusAbbreviation = offenceAbbreviation;
+				$bonusColour = offenceColour; 
+				$bonusIcon = getStatTypeIcon(offenceTag);
+
+				// Take the stats being improved and take their proportionate stat percentage
+				// and apply to that the bar width to get a factor relevant to the bar width against
+				// the stats in question. Should lead to better bonus visual results
+				$bonusFactor = (($offStatFactor - minimumBaseStatPercentage) / $baseStatPercentageDifference);
+				$offStatBonusPercentage = floor(($statBarBonusPercentageDifference * $bonusFactor) * 100);			
 			} break;
-			case "defence": 
-				{ 
-					$bonusAbbreviation = "DEF";
-					$bonusColour = $defColour; 
-					$bonusIcon = "fa-user-shield";
-				} break;
+
+			case defenceTag: { 
+				$bonusAbbreviation = defenceAbbreviation;
+				$bonusColour = defenceColour; 
+				$bonusIcon = getStatTypeIcon(defenceTag);
+
+				// Take the stats being improved and take their proportionate stat percentage
+				// and apply to that the bar width to get a factor relevant to the bar width against
+				// the stats in question. Should lead to better bonus visual results
+				$bonusFactor = (($defStatFactor - minimumBaseStatPercentage) / $baseStatPercentageDifference);
+				$defStatBonusPercentage = floor(($statBarBonusPercentageDifference * $bonusFactor) * 100);		
+			} break;
 				
-			case "stealth": 
-				{ 
-					$bonusAbbreviation = "STL";
-					$bonusColour = $stlColour; 
-					$bonusIcon = "fa-user-secret";
-				} break;
+			case stealthTag: { 
+				$bonusAbbreviation = stealthAbbreviation;
+				$bonusColour = stealthColour; 
+				$bonusIcon = getStatTypeIcon(stealthTag);
+
+				// Take the stats being improved and take their proportionate stat percentage
+				// and apply to that the bar width to get a factor relevant to the bar width against
+				// the stats in question. Should lead to better bonus visual results
+				$bonusFactor = (($stlStatFactor - minimumBaseStatPercentage) / $baseStatPercentageDifference);
+				$stlStatBonusPercentage = floor(($statBarBonusPercentageDifference * $bonusFactor) * 100);		
+			} break;
 				
 			default: break;
 		}
@@ -194,19 +268,29 @@
 				$isOffDef, 
 				$isOffStl, 
 				$isDefStl,
-				$OffStatPercentage,
-				$DefStatPercentage,
-				$StlStatPercentage,
-			   	$offColour,
-			    $defColour,
-			   	$stlColour,
+				$offStatPercentage,
+				$defStatPercentage,
+				$stlStatPercentage,
 				$bonusAbbreviation,
 			    $bonusColour,
-			    $bonusIcon];
+			    $bonusIcon,
+				$offStatBonusPercentage,
+				$defStatBonusPercentage,
+				$stlStatBonusPercentage];
 	}
 
 	function clamp($current, $min, $max) {
 		return max($min, min($max, $current));
+	}
+
+	function getStatTypeIcon($statType) {
+		switch ($statType) {
+			case offenceTag: { return offenceIcon; } break;
+			case defenceTag: { return defenceIcon; } break;
+			case stealthTag: { return stealthIcon;  } break;
+			default: break;
+		}
+		return;
 	}
 ?>
 

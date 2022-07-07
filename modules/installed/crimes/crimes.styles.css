@@ -209,59 +209,9 @@
 	border-right: 1px dashed var(--gray);
 }
 
-.crime-holder .crime-stat-distro-container {
-	margin: auto;
-	justify-content: flex-end;
-	flex-grow: 1;
-	order:  2;
-	width: 20%;
-	min-width: 20%;
-	max-width: 20%;
-	text-align: center;
-	min-height: 15px;
-	max-height: 15px;
-}
-
-.crime-holder .crime-stat-distro-progress-bar-container {
-	width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-	min-height: 15px;
-	max-height: 15px;
-	background-color: rgba(0, 0, 0, 0);
-	border: 1px outset rgba(0, 0, 0, 0.3);
-	border-radius:8px;
-	box-shadow: 0px 1px rgb(0 0 0 / 50%);
-}
-
-.crime-holder .crime-stat-distro-progress-bar {
-	min-height: 15px;
-	max-height: 15px;
-	transition: none;
-	border-left: 1px inset black;
-	border-right: 1px inset black;
-	border-color: rgba(0,0,0,0.4);
-}
-
-.crime-holder .crime-stat-distro-progress-bar-left {
-	min-height: 15px;
-	max-height: 15px;
-	transition: none;
-	border-right: 1px inset black;
-	border-color: rgba(0,0,0,0.4);
-}
-
-.crime-holder .crime-stat-distro-progress-bar-right {
-	min-height: 15px;
-	max-height: 15px;
-	transition: none;
-	border-left: 1px inset black;
-	border-color: rgba(0,0,0,0.4);
-}
-
 /* STACKED STAT BARS */
 
-.crime-holder .crime-stat-distro-stacked-container {
+.crime-holder .crime-stat-container {
 	margin: auto;
 	justify-content: flex-end;
 	flex-grow: 1;
@@ -272,13 +222,13 @@
 	text-align: center;
 }
 
-.crime-holder .crime-stat-distro-internal-stacked-container {
+.crime-holder .crime-stat-internal-container {
   	width: 75%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.crime-holder .crime-stat-distro-stacked-progress-bar-controller-override {
+.crime-holder .crime-stat-progress-bar-controller-override {
 	height: 8px;
 	overflow: hidden;
 	margin-bottom: 3px;
@@ -286,15 +236,24 @@
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
-.crime-holder .crime-stat-distro-stacked-progress-bar-container {
+.crime-holder .crime-stat-progress-bar-container {
 	margin-bottom: 2px;
 	height: 8px;
 	min-height: 8px;
 	max-height: 8px;
 	border: 1px solid black;
 	border-color: rgba(0, 0, 0, 1);
-	border-top-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+	border-radius: 0px;
+}
+
+.crime-holder .crime-stat-progress-bar-bonus-container {
+	margin-bottom: 2px;
+	height: 8px;
+	min-height: 8px;
+	max-height: 8px;
+	border: 1px solid black;
+	border-radius: 0px;
+	opacity: 0.5;
 }
 
 /* BONUS */

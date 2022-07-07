@@ -56,12 +56,12 @@
 					 $offRatio,
 					 $defRatio,
 					 $stlRatio,
-					 $offColour,
-					 $defColour,
-					 $stlColour,
 					 $bonus,
 					 $bonusColour,
-					 $bonusIcon] = calculateStatDistribution(
+					 $bonusIcon,
+					 $bonusOffPercentage,
+					 $bonusDefPercentage,
+					 $bonusStlPercentage] = calculateStatDistribution(
 						$crime
 					);
 
@@ -78,12 +78,15 @@
 						"offRatio" => $offRatio,
 						"defRatio" => $defRatio,
 						"stlRatio" => $stlRatio,
-						"offColour" => $offColour,
-						"defColour" => $defColour,
-						"stlColour" => $stlColour,
+						"offColour" => offenceColour,
+						"defColour" => defenceColour,
+						"stlColour" => stealthColour,
 						"bonus" => $bonus,
 						"bonusColour" => $bonusColour,
-						"bonusIcon" => $bonusIcon
+						"bonusIcon" => $bonusIcon,
+						"bonusOffRatio" => $bonusOffPercentage,
+						"bonusDefRatio" => $bonusDefPercentage,
+						"bonusStlRatio" => $bonusStlPercentage
 					);
 				}
 
@@ -170,7 +173,8 @@
 						$crimeInfo->C_totalStats,
 						$crimeInfo->C_offenceRatio,
 						$crimeInfo->C_defenceRatio,
-						$crimeInfo->C_stealthRatio
+						$crimeInfo->C_stealthRatio,
+						$crimeInfo->C_bonus
 					);
 
 					// Display the crime success alert

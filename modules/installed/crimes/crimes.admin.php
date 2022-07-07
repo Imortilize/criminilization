@@ -46,16 +46,18 @@
 				foreach ($fetchedCrimes as &$crime) {
 
 					// Calculate the stats to award
-					[$offence, $defence, $stealth] = calculateStats(
+					$stats = calculateStats(
 						$crime['totalStats'],
 						$crime['offRatio'],
 						$crime['defRatio'],
-						$crime['stlRatio']
+						$crime['stlRatio'],
+                        $crime['bonus']
 					);
 
-					$crime['offStats'] = $offence;
-					$crime['defStats'] = $defence;
-					$crime['stlStats'] = $stealth;
+					$crime['offStats'] = $stats[0];
+                    $crime['defStats'] = $stats[1];
+                    $crime['stlStats'] = $stats[2];
+                    $crime['adjustedTotalStats'] = $stats[3];
 				}
 				unset($crime); 
 				
@@ -71,7 +73,8 @@
 					$crime['totalStats'],
 					$crime['offRatio'],
 					$crime['defRatio'],
-					$crime['stlRatio']
+					$crime['stlRatio'],
+                    $crime['bonus']
 				);
 
 				// Set the stats values

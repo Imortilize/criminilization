@@ -65,19 +65,25 @@
 										{name} 
 									</div> 
 
-									<div class="crime-stat-distro-stacked-container">
-										<div class="crime-stat-distro-internal-stacked-container">
-											<div class="progress crime-stat-distro-stacked-progress-bar-controller-override">
-												<div class="progress crime-stat-distro-stacked-progress-bar-container" role="progressbar" style="background-color:{offColour};width:{offRatio}%">
+									<div class="crime-stat-container">
+										<div class="crime-stat-internal-container">
+                                            <div class="progress crime-stat-progress-bar-controller-override">
+                                                <div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{offColour};width:{offRatio}%">
+                                                </div>
+                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{offColour};width:{bonusOffRatio}%">
+                                                </div>
+                                            </div>
+											<div class="progress crime-stat-progress-bar-controller-override">
+												<div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{defColour};width:{defRatio}%">
 												</div>
-											</div>
-											<div class="progress crime-stat-distro-stacked-progress-bar-controller-override">
-												<div class="progress crime-stat-distro-stacked-progress-bar-container" style="background-color:{defColour};width:{defRatio}%">
-												</div>
+                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{defColour};width:{bonusDefRatio}%">
+                                                </div>
 											</div>	
-											<div class="progress crime-stat-distro-stacked-progress-bar-controller-override">
-												<div class="progress crime-stat-distro-stacked-progress-bar-container" style="background-color:{stlColour};width:{stlRatio}%">
+											<div class="progress crime-stat-progress-bar-controller-override">
+												<div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{stlColour};width:{stlRatio}%">
 												</div>
+                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{stlColour};width:{bonusStlRatio}%">
+                                                </div>
 											</div>
 										</div>
 									</div>
@@ -140,6 +146,7 @@
                         <th width="120px">Reward</th>
                         <th width="70px">Level</th>
                         <th width="70px">EXP</th>
+                        <th width="70px">Bonus</th>
 						<th width="70px">Offence</th>
 						<th width="70px">Defence</th>
 						<th width="70px">Stealth</th>
@@ -156,10 +163,11 @@
                             <td>${money} - ${maxMoney}</td>
                             <td>{level}</td>
                             <td>{exp}</td>
+                            <td>{bonus}</td>
 							<td>{offStats}</td>
 							<td>{defStats}</td>
 							<td>{stlStats}</td>
-							<td>{totalStats}</td>
+							<td>{adjustedTotalStats}</td>
                             <td>
                                 [<a href="?page=admin&module=crimes&action=edit&id={id}">Edit</a>] 
                                 [<a href="?page=admin&module=crimes&action=delete&id={id}">Delete</a>]
