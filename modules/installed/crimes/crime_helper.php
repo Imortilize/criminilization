@@ -153,6 +153,8 @@
 		$OffStatPercentage = floor($OffStatPercentage * $statBarBasePercentage);
 		$DefStatPercentage = floor($DefStatPercentage * $statBarBasePercentage);
 		$StlStatPercentage = floor($StlStatPercentage * $statBarBasePercentage);
+
+		// Test Change!
 		
 		// Determine the bonus values to return
 		$bonusAbbreviation = "";
