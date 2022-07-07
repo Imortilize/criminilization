@@ -57,7 +57,7 @@
 					$crime['offStats'] = $stats[0];
                     $crime['defStats'] = $stats[1];
                     $crime['stlStats'] = $stats[2];
-                    $crime['adjustedTotalStats'] = $stats[3];
+                    $crime['adjustedTotalStats'] = $stats[3];;
 				}
 				unset($crime); 
 				
