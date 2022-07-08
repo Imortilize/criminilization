@@ -51,7 +51,7 @@
 
 								<span class="stat-distribution-header">
                                     <span class="stat-distribution-header-bonus-icon">
-                                        <i class="fa-solid fa-fire"></i>
+                                        <i class="fa-solid fa-fire-alt"></i>
                                     </span>
                                     <span class="stat-distribution-header-text">
 									    Stats
