@@ -44,8 +44,12 @@
 					$crimeID = $crime->C_id;
 
 					// Calculate the crimes stat distributuon
-					[$firstDistributionStat, 
-					 $secondDistributionStat, 
+					[$distributionStat1, 
+					 $distributionStat2, 
+					 $distributionStat1Colour,
+					 $distributionStat2Colour,
+					 $distributionStat1Icon, 
+					 $distributionStat2Icon, 
 					 $isMixed, 
 					 $isOffence,
 					 $isDefence,
@@ -65,6 +69,9 @@
 						$crime
 					);
 
+					// Grab the stat distros and determine the crime stat indicators
+
+
 					// Create the crime info to display
 					$crimeInfo[] = array(
 						"name" => $crime->C_name,
@@ -74,7 +81,10 @@
 						"cooldown" => $this->timeLeft($crime->C_cooldown),
 						"percent" => $crime->C_chance, 
 						"id" => $crimeID,
-						"isMixed" => $isMixed,
+						"statIndicator1Icon" => $distributionStat1Icon,
+						"statIndicator1Colour" => $distributionStat1Colour,
+						"statIndicator2Icon" => $distributionStat2Icon,
+						"statIndicator2Colour" => $distributionStat2Colour,
 						"offRatio" => $offRatio,
 						"defRatio" => $defRatio,
 						"stlRatio" => $stlRatio,
@@ -189,7 +199,12 @@
 
 					// Set the new user stats
                     $this->user->set("US_money", $this->user->info->US_money + $cashReward);
-                    $this->user->set("US_exp", $this->user->info->US_exp + $crimeInfo->C_exp);
+
+					$newUserXp = ($this->user->info->US_exp + $crimeInfo->C_exp);
+					if ($newUserXp <= 2147483647) {
+						$this->user->set("US_exp", $newUserXp);
+					}
+                    
 					$this->user->set("US_offence", $this->user->info->US_offence + $offence);
 					$this->user->set("US_defence", $this->user->info->US_defence + $defence);
 					$this->user->set("US_stealth", $this->user->info->US_stealth + $stealth);

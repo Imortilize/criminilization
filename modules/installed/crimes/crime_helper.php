@@ -12,6 +12,7 @@
 	const offenceAbbreviation = "OFF";
 	const defenceAbbreviation = "DEF";
 	const stealthAbbreviation= "STL";
+	const mixedAbbreviation= "MIX";
 
 	// Colours
 	const offenceColour = "#ee5f5b";
@@ -23,10 +24,15 @@
 	const offenceIcon = "fa-radiation";
 	const defenceIcon = "fa-user-shield";
 	const stealthIcon = "fa-user-secret";
+	const mixedIcon = "fa-balance-scale";
 
 	// Display encoding boundaries
 	const minimumBaseStatPercentage = 0.05;	// Minimum of 5%
 	const maximumBaseStatPercentage = 0.75;	// Maximum of 75%
+
+	// Stat Indicator Factors
+	const mixedMaxStatDifference = 5;
+	const fullStatPercentage = 60;
 
 	/* Calculate the stats given the initial ratios and bonus to apply */
 	function calculateStats($totalStats, $offenceRatio, $defenceRatio, $stealthRatio, $bonus) {
@@ -94,7 +100,10 @@
 		$adjustedTotalStats = ($offence + $defence + $stealth);
 		
 		// Return these stats
-		return [$offence, $defence, $stealth, $adjustedTotalStats];
+		return [$offence, 
+				$defence, 
+				$stealth, 
+				$adjustedTotalStats];
 	}
 
 	/* Calculate the stat distribution given the input crime */
@@ -111,81 +120,6 @@
 		 $defence,
 		 $stealth,
 		 $adjustedTotalStats] = calculateStats($totalStats, $offRatio, $defRatio, $stlRatio, $bonus);
-
-		// first lets see if it's a full mixed crime by determining the max difference
-		// between the 3 crime stat categories
-		$offDefDifference = abs($offRatio - $defRatio);
-		$offStlDifference = abs($offRatio - $stlRatio);
-		$defStlDifference = abs($defRatio - $stlRatio);
-		$maxDifference = max($offDefDifference, $offStlDifference, $defStlDifference);
-		
-		$firstDistributionStat = "";
-		$secondDistributionStat = "";
-
-		// If the max difference between the 3 stats is less than or equal to 5
-		// we determine it as a mixed crime
-		if ($maxDifference <= 5) {
-			// We determine this is a full mixed crime
-			$firstDistributionStat = mixedTag;
-			$secondDistributionStat = "";
-		} else
-		{
-			// This is not a mixed crime so now we want to determine it's
-			// mix basis (off/def, off/stl, def/stl)
-			$offDefTotal = ($offRatio + $defRatio);
-			$offStlTotal = ($offRatio + $stlRatio);
-			$defStlTotal = ($defRatio + $stlRatio);
-
-			// Create an array to easily detect the min/max of the stats as needed
-			$statArray = array(
-				0 => $offDefTotal, 
-				1 => $offStlTotal, 
-				2 => $defStlTotal
-			);
-			$index = array_search(max($statArray), $statArray);
-
-			switch ($index) {
-				case 0: 
-					{ 
-						$firstDistributionStat = offenceTag;
-
-						if ($offence > 0) {
-							$secondDistributionStat = defenceTag;
-						}
-					} 
-					break;
-
-				case 1: 
-					{ 
-						$firstDistributionStat = offenceTag;
-
-						if ($defence > 0) {
-							$secondDistributionStat = stealthTag;
-						}
-					} 
-					break;
-
-				case 2: 
-					{ 
-						$firstDistributionStat = defenceTag;
-
-						if ($stealth > 0) {
-							$secondDistributionStat = stealthTag;
-						}
-					} 
-					break;
-
-				default: break;
-			}
-		}
-		
-		$isMixed = ($firstDistributionStat == mixedTag);
-		$isOffence = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == ""));
-		$isDefence = (($firstDistributionStat == defenceTag) && ($secondDistributionStat == ""));
-		$isStealth = (($firstDistributionStat == stealthTag) && ($secondDistributionStat == ""));
-		$isOffDef = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == defenceTag));
-		$isOffStl = (($firstDistributionStat == offenceTag) && ($secondDistributionStat == stealthTag));
-		$isDefStl = (($firstDistributionStat == defenceTag) && ($secondDistributionStat == stealthTag));
 		
 		// Calculate the off/def/stl ratios
 		$baseStatPercentageDifference = (maximumBaseStatPercentage - minimumBaseStatPercentage);
@@ -258,9 +192,155 @@
 			default: break;
 		}
 
+		// Add the adjusted stat percentage + bonus percentage together to get the new true stat percentage
+		$adjustedOffenceRatio = ($offStatPercentage + $offStatBonusPercentage);
+		$adjustedDefenceRatio = ($defStatPercentage + $defStatBonusPercentage);
+		$adjustedStealthRatio = ($stlStatPercentage + $stlStatBonusPercentage);
+
+		// first lets see if it's a full mixed crime by determining the max difference
+		// between the 3 crime stat categories
+		$offDefDifference = abs($adjustedOffenceRatio - $adjustedDefenceRatio);
+		$offStlDifference = abs($adjustedOffenceRatio - $adjustedStealthRatio);
+		$defStlDifference = abs($adjustedDefenceRatio - $adjustedStealthRatio);
+		$maxDifference = max($offDefDifference, $offStlDifference, $defStlDifference);
+		
+		$distributionStat1 = "";
+		$distributionStat1Colour = "";
+		$distributionStat1Icon = "";
+		$distributionStat2 = "";
+		$distributionStat2Colour = "";
+		$distributionStat2Icon = "";
+
+		// If the max difference between the 3 stats is less than or equal to 5
+		// we determine it as a mixed crime
+		if ($maxDifference <= mixedMaxStatDifference) {
+			// We determine this is a full mixed crime
+			$distributionStat1 = mixedTag;
+			$distributionStat1Colour = mixedColour;
+			$distributionStat1Icon = mixedIcon;
+			$distributionStat2 = "";
+		} else
+		{
+			// We now want to determine if this is a full stat crime
+			$maxStatRatio = max($adjustedOffenceRatio, $adjustedDefenceRatio, $adjustedStealthRatio);
+			if ($maxStatRatio >= fullStatPercentage) {
+				// This is a full stat so grab which one it is
+
+				// Create an array to easily detect the min/max of the stats as needed
+				$statArray = array(
+					0 => $adjustedOffenceRatio, 
+					1 => $adjustedDefenceRatio, 
+					2 => $adjustedStealthRatio
+				);
+				$index = array_search(max($statArray), $statArray);
+
+				switch ($index) {
+					case 0: 
+						{ 
+							$distributionStat1 = offenceTag;
+							$distributionStat1Colour = offenceColour;
+							$distributionStat1Icon = offenceIcon;
+						} 
+						break;
+
+					case 1: 
+						{ 
+							$distributionStat1 = defenceTag;
+							$distributionStat1Colour = defenceColour;
+							$distributionStat1Icon = defenceIcon;
+						} 
+						break;
+
+					case 2: 
+						{ 
+							$distributionStat1 = stealthTag;
+							$distributionStat1Colour = stealthColour;
+							$distributionStat1Icon = stealthIcon;
+						} 
+						break;
+
+					default: break;
+				}
+			} else {
+				
+				// This is not a mixed crime so now we want to determine it's
+				// mix basis (off/def, off/stl, def/stl)
+				$offDefTotal = ($adjustedOffenceRatio + $adjustedDefenceRatio);
+				$offStlTotal = ($adjustedOffenceRatio + $adjustedStealthRatio);
+				$defStlTotal = ($adjustedDefenceRatio + $adjustedStealthRatio);
+
+				// Create an array to easily detect the min/max of the stats as needed
+				$statArray = array(
+					0 => $offDefTotal, 
+					1 => $offStlTotal, 
+					2 => $defStlTotal
+				);
+				$index = array_search(max($statArray), $statArray);
+
+				switch ($index) {
+					case 0: 
+						{ 
+							$distributionStat1 = offenceTag;
+							$distributionStat1Colour = offenceColour;
+							$distributionStat1Icon = offenceIcon;
+
+							if ($offence > 0) {
+								$distributionStat2 = defenceTag;
+								$distributionStat2Colour = defenceColour;
+								$distributionStat2Icon = defenceIcon;
+							}
+						} 
+						break;
+
+					case 1: 
+						{ 
+							$distributionStat1 = offenceTag;
+							$distributionStat1Colour = offenceColour;
+							$distributionStat1Icon = offenceIcon;
+
+							if ($defence > 0) {
+								$distributionStat2 = stealthTag;
+								$distributionStat2Colour = stealthColour;
+								$distributionStat2Icon = stealthIcon;
+							}
+						} 
+						break;
+
+					case 2: 
+						{ 
+							$distributionStat1 = defenceTag;
+							$distributionStat1Colour = defenceColour;
+							$distributionStat1Icon = defenceIcon;
+
+							if ($stealth > 0) {
+								$distributionStat2 = stealthTag;
+								$distributionStat1Colour = stealthColour;
+								$distributionStat2Icon = stealthIcon;
+							}
+						} 
+						break;
+
+					default: break;
+				}
+			}
+		}
+		
+		// Grab the stat leaning indicators
+		$isMixed = ($distributionStat1 == mixedTag);
+		$isOffence = (($distributionStat1 == offenceTag) && ($distributionStat2 == ""));
+		$isDefence = (($distributionStat1 == defenceTag) && ($distributionStat2 == ""));
+		$isStealth = (($distributionStat1 == stealthTag) && ($distributionStat2 == ""));
+		$isOffDef = (($distributionStat1 == offenceTag) && ($distributionStat2 == defenceTag));
+		$isOffStl = (($distributionStat1 == offenceTag) && ($distributionStat2 == stealthTag));
+		$isDefStl = (($distributionStat1 == defenceTag) && ($distributionStat2 == stealthTag));
+
 		// Return crime info
-		return [$firstDistributionStat, 
-				$secondDistributionStat,
+		return [$distributionStat1, 
+				$distributionStat2,
+				$distributionStat1Colour,
+				$distributionStat2Colour,
+				$distributionStat1Icon,
+				$distributionStat2Icon,
 				$isMixed, 
 				$isOffence,
 				$isDefence,

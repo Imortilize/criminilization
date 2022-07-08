@@ -141,7 +141,7 @@
             
             <link href="themes/{_theme}/bootstrapThemes/{_themeSettings.bootstrap}/variables.css" rel="stylesheet" />
             <link href="themes/{_theme}/bootstrapThemes/{_themeSettings.bootstrap}/bootstrap.min.css" rel="stylesheet" />
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css" rel="stylesheet" />
             <link href="themes/{_theme}/css/style.css" rel="stylesheet" />
             <link href="themes/{_theme}/css/mobile.css" rel="stylesheet" />
 			<link href="themes/{_theme}/css/user_information.css" rel="stylesheet" />
