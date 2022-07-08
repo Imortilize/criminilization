@@ -148,9 +148,9 @@
 }
 
 .crime-header-holder .stat-distribution-header {
-	margin: auto;
-	justify-content: flex-end;
-	flex-grow: 1;
+	display: flex;
+	align-content: center;
+    align-items: center;
 	order:  3;
 	width: 20%;
 	min-width: 20%;
@@ -159,6 +159,25 @@
 	font-weight: bold;
 	border-right: 1px dotted var(--gray);
 	padding: 3px 0px 3px 0px;
+}	
+
+.crime-header-holder .stat-distribution-header-bonus-icon {
+	display: flex;
+	width: 30%;
+	height: 75%;
+    justify-content: center;
+    align-content: center;
+	text-shadow: 0 0 2px #840c1c, 0 0 2px gold;
+	color: gold;
+}
+
+.crime-header-holder .stat-distribution-header-text {
+	display: flex;
+	height: 100%;
+    width: 65%;
+	margin-right: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .crime-header-holder .bonus-distribution-header {
@@ -348,7 +367,7 @@
 }
 
 .crime-holder .crime-bonus-icon {
-	margin: auto;
+	width: 30%;
 	font-size: 1.3em;
 	font-weight: bold;
 	text-shadow: 1px 1px 2px darkblue, 0 0 2px lightcoral;

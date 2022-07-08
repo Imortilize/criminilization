@@ -50,7 +50,12 @@
 								</span> 
 
 								<span class="stat-distribution-header">
-									Stats
+                                    <span class="stat-distribution-header-bonus-icon">
+                                        <i class="fa-solid fa-fire"></i>
+                                    </span>
+                                    <span class="stat-distribution-header-text">
+									    Stats
+                                    </span>
 								</span> 
 								
 								<!--<span class="bonus-distribution-header">
