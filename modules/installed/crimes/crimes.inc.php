@@ -199,7 +199,12 @@
 
 					// Set the new user stats
                     $this->user->set("US_money", $this->user->info->US_money + $cashReward);
-                    $this->user->set("US_exp", $this->user->info->US_exp + $crimeInfo->C_exp);
+
+					$newUserXp = ($this->user->info->US_exp + $crimeInfo->C_exp);
+					if ($newUserXp <= 2147483647) {
+						$this->user->set("US_exp", $newUserXp);
+					}
+                    
 					$this->user->set("US_offence", $this->user->info->US_offence + $offence);
 					$this->user->set("US_defence", $this->user->info->US_defence + $defence);
 					$this->user->set("US_stealth", $this->user->info->US_stealth + $stealth);

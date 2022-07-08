@@ -304,7 +304,9 @@
 	height: 8px;
 	min-height: 8px;
 	max-height: 8px;
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
 	border-color: rgba(0, 0, 0, 1);
 	border-radius: 0px;
 }
@@ -314,9 +316,12 @@
 	height: 8px;
 	min-height: 8px;
 	max-height: 8px;
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	border-radius: 0px;
-	opacity: 0.5;
+	opacity: 0.9;
+	box-shadow: inset -3px -1px 20px 2px rgb(249 255 182), -2px 0px 10px 0px rgb(249 255 182);
 }
 
 /* BONUS */
@@ -346,7 +351,7 @@
 	margin: auto;
 	font-size: 1.3em;
 	font-weight: bold;
-	text-shadow: 1px 1px 2px darkblue, 0 0 2px gold;
+	text-shadow: 1px 1px 2px darkblue, 0 0 2px lightcoral;
 }
 
 .crime-holder .crime-bonus-distro-progress-bar-container {
