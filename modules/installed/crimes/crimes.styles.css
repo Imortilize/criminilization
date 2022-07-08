@@ -136,9 +136,9 @@
 	justify-content: flex-start;
 	flex-grow: 1;
 	order:  2;
-	width: 58%;
-	min-width: 58%;
-	max-width: 58%;
+	width: 68%;
+	min-width: 68%;
+	max-width: 68%;
 	text-align: left;
 	text-indent: 5%;
 	font-weight: bold;
@@ -152,9 +152,9 @@
 	justify-content: flex-end;
 	flex-grow: 1;
 	order:  3;
-	width: 15%;
-	min-width: 15%;
-	max-width: 15%;
+	width: 20%;
+	min-width: 20%;
+	max-width: 20%;
 	text-align: center;
 	font-weight: bold;
 	border-right: 1px dotted var(--gray);
@@ -166,9 +166,9 @@
 	justify-content: flex-end;
 	flex-grow: 1;
 	order:  4;
-	width: 15%;
-	min-width: 15%;
-	max-width: 15%;
+	width: 10%;
+	min-width: 10%;
+	max-width: 10%;
 	text-align: center;
 	font-weight: bold;
 	border-right: 1px dotted var(--gray);
@@ -224,6 +224,7 @@
 	flex-wrap: wrap;
 	min-width: 7%;
 	max-width: 7%;
+	border-right: 1px dashed var(--gray);
 }
 
 .crime-holder .crime-indicator-container {
@@ -235,14 +236,14 @@
 .crime-holder .crime-indicator-icon {
 	display: flex;
 	align-items: center;
-	text-shadow: 0 0 2px darkblue, 0 0 2px darkblue;
+	text-shadow: 1px 1px 2px darkblue, 0 0 2px lightcoral;
 	font-size: 140%;
 }
 
 .crime-holder .crime-indicator-icon-left {
 	display: flex;
 	align-items: center;
-	text-shadow: 0 0 2px darkblue, 0 0 2px darkblue;
+	text-shadow: 1px 1px 2px darkblue, 0 0 2px lightcoral;
 	font-size: 130%;
 	min-width: 21px;
 	justify-content: center;
@@ -251,7 +252,7 @@
 .crime-holder .crime-indicator-icon-right {
 	display: flex;
 	align-items: center;
-	text-shadow: 0 0 2px darkblue, 0 0 2px darkblue;
+	text-shadow: 1px 1px 2px darkblue, 0 0 2px lightcoral;
 	font-size: 130%;
 	min-width: 21px;
 	justify-content: center;
@@ -263,32 +264,30 @@
 	justify-content: flex-start;
 	flex-grow: 1;
 	order:  2;
-	width: 58%;
-	min-width: 58%;
-	max-width: 58%;
+	width: 68%;
+	min-width: 68%;
+	max-width: 68%;
 	font-size: 0.95em;
 	padding-left: 3%;
-	border-left: 1px dashed var(--gray);
-	border-right: 1px dashed var(--gray);
 	text-align: left;
 }
 
 /* STACKED STAT BARS */
 
 .crime-holder .crime-stat-container {
-	margin: auto;
-	justify-content: flex-end;
-	flex-grow: 1;
+	display: flex;
 	order:  3;
-	width: 15%;
-	min-width: 15%;
-	max-width: 15%;
-	text-align: center;
+	width: 20%;
+	min-width: 20%;
+	max-width: 20%;
+	align-items: center;
+    flex-wrap: nowrap;
+	border-left: 1px dashed var(--gray);
+	border-right: 1px dashed var(--gray);
 }
 
 .crime-holder .crime-stat-internal-container {
-  	width: 75%;
-	margin-left: auto;
+  	width: 65%;
 	margin-right: auto;
 }
 
@@ -327,9 +326,9 @@
 	justify-content: flex-end;
 	flex-grow: 1;
 	order:  4;
-	width: 15%;
-	min-width: 15%;
-	max-width: 15%;
+	width: 10%;
+	min-width: 10%;
+	max-width: 10%;
 	text-align: center;
 	min-height: 15px;
 	border-left: 1px dashed var(--gray);
@@ -341,6 +340,13 @@
 	font-size: 1em;
 	font-weight: bold;
 	text-shadow: 0 0 2px #000000, 0 0 2px #000000;
+}
+
+.crime-holder .crime-bonus-icon {
+	margin: auto;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px darkblue, 0 0 2px gold;
 }
 
 .crime-holder .crime-bonus-distro-progress-bar-container {

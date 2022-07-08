@@ -53,9 +53,9 @@
 									Stats
 								</span> 
 								
-								<span class="bonus-distribution-header">
+								<!--<span class="bonus-distribution-header">
 									Bonus
-								</span> 
+								</span> -->
 
 								<span class="select-crime-header">
 								</span> 
@@ -70,7 +70,7 @@
                                         {#if statIndicator2Icon}
                                        <!-- <div class="crime-indicator-container" style="background-color:{bonusColour};border-color:{bonusColour};">-->
                                             <i class="fa {statIndicator1Icon} crime-indicator-icon-left" style="color:{statIndicator1Colour};"></i>
-                                            <i class="fa {statIndicator2Icon} crime-indicator-icon-right" data-fa-transform="down-4" style="color:{statIndicator2Colour};"></i>
+                                            <i class="fa {statIndicator2Icon} crime-indicator-icon-right" style="color:{statIndicator2Colour};"></i>
                                       <!--  </div>-->
                                         {/if}
 
@@ -84,6 +84,9 @@
 									</div> 
 
 									<div class="crime-stat-container">
+                                        <div class="crime-bonus-icon" style="color:{bonusColour}">
+											<i class="fa-solid {bonusIcon}"></i>
+										</div> 
 										<div class="crime-stat-internal-container">
                                             <div class="progress crime-stat-progress-bar-controller-override">
                                                 <div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{offColour};width:{offRatio}%">
@@ -106,12 +109,12 @@
 										</div>
 									</div>
 															
-									<div class="crime-bonus-distro-container">
+									<!--<div class="crime-bonus-distro-container">
 										<div class="crime-bonus-text" style="color:{bonusColour}">
 											<i class="fa-solid {bonusIcon}"></i>
 											{bonus} 
 										</div> 
-									</div> 
+									</div> -->
 										
 									<div class="select">
 										<input type="radio" class ="input" id="crime{id}" name="crime-select">
