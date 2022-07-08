@@ -50,7 +50,10 @@
 								</span> 
 
 								<span class="stat-distribution-header">
-									Stats
+                                    <img class="stat-distribution-header-bonus-icon" src="modules/installed/crimes/images/bonus1.png" />
+                                    <span class="stat-distribution-header-text">
+									    Stats
+                                    </span>
 								</span> 
 								
 								<!--<span class="bonus-distribution-header">
