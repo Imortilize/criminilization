@@ -91,20 +91,29 @@
                                             <div class="progress crime-stat-progress-bar-controller-override">
                                                 <div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{offColour};width:{offRatio}%">
                                                 </div>
-                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{offColour};width:{bonusOffRatio}%">
-                                                </div>
+
+                                                {#if bonusOffRatio}
+                                                    <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{offColour};width:{bonusOffRatio}%">
+                                                    </div>
+                                                {/if}
                                             </div>
 											<div class="progress crime-stat-progress-bar-controller-override">
 												<div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{defColour};width:{defRatio}%">
 												</div>
-                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{defColour};width:{bonusDefRatio}%">
-                                                </div>
+
+                                                {#if bonusDefRatio}
+                                                    <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{defColour};width:{bonusDefRatio}%">
+                                                    </div>
+                                                {/if}
 											</div>	
 											<div class="progress crime-stat-progress-bar-controller-override">
 												<div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{stlColour};width:{stlRatio}%">
 												</div>
-                                                <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{stlColour};width:{bonusStlRatio}%">
-                                                </div>
+
+                                                {#if bonusStlRatio}
+                                                    <div class="progress-bar crime-stat-progress-bar-bonus-container" role="progressbar" style="background-color:{stlColour};width:{bonusStlRatio}%">
+                                                    </div>
+                                                {/if}
 											</div>
 										</div>
 									</div>
