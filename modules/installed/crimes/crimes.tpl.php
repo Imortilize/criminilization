@@ -42,6 +42,7 @@
 						<div class="crime-header-holder">
 							<p>
                                 <span class="crime-indicator-header">
+                                    Focus
 								</span> 
 
 								<span class="crime-header">
@@ -66,9 +67,16 @@
 								<div class="crime-holder-container">
  
                                     <div class="crime-indicator"">
-                                        <div class="crime-indicator-container" style="background-color:{bonusColour};border-color:{bonusColour};">
-                                           <i class="fa {bonusIcon} crime-indicator-icon" style="color:{bonusColour}"></i>
-                                        </div>
+                                        {#if statIndicator2Icon}
+                                       <!-- <div class="crime-indicator-container" style="background-color:{bonusColour};border-color:{bonusColour};">-->
+                                            <i class="fa {statIndicator1Icon} crime-indicator-icon-left" style="color:{statIndicator1Colour};"></i>
+                                            <i class="fa {statIndicator2Icon} crime-indicator-icon-right" data-fa-transform="down-4" style="color:{statIndicator2Colour};"></i>
+                                      <!--  </div>-->
+                                        {/if}
+
+                                        {#unless statIndicator2Icon}
+                                            <i class="fa {statIndicator1Icon} crime-indicator-icon" style="color:{statIndicator1Colour};"></i>
+                                        {/unless}
                                     </div> 
 
 									<div class="crime-text">

@@ -44,8 +44,12 @@
 					$crimeID = $crime->C_id;
 
 					// Calculate the crimes stat distributuon
-					[$firstDistributionStat, 
-					 $secondDistributionStat, 
+					[$distributionStat1, 
+					 $distributionStat2, 
+					 $distributionStat1Colour,
+					 $distributionStat2Colour,
+					 $distributionStat1Icon, 
+					 $distributionStat2Icon, 
 					 $isMixed, 
 					 $isOffence,
 					 $isDefence,
@@ -65,6 +69,9 @@
 						$crime
 					);
 
+					// Grab the stat distros and determine the crime stat indicators
+
+
 					// Create the crime info to display
 					$crimeInfo[] = array(
 						"name" => $crime->C_name,
@@ -74,7 +81,10 @@
 						"cooldown" => $this->timeLeft($crime->C_cooldown),
 						"percent" => $crime->C_chance, 
 						"id" => $crimeID,
-						"isMixed" => $isMixed,
+						"statIndicator1Icon" => $distributionStat1Icon,
+						"statIndicator1Colour" => $distributionStat1Colour,
+						"statIndicator2Icon" => $distributionStat2Icon,
+						"statIndicator2Colour" => $distributionStat2Colour,
 						"offRatio" => $offRatio,
 						"defRatio" => $defRatio,
 						"stlRatio" => $stlRatio,
