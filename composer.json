@@ -1,0 +1,10 @@
+{
+    "config": {
+        "allow-plugins": {
+            "plesk/composer-comm": true
+        }
+    },
+    "require": {
+        "scssphp/scssphp": "^1.10.3"
+    }
+}
