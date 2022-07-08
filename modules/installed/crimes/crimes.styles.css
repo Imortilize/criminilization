@@ -318,6 +318,14 @@
 	background-color: rgba(0, 0, 0, 0.3);
 }
 
+.crime-holder .crime-stat-progress-bar-controller-override-bottom {
+	height: 8px;
+	overflow: hidden;
+	margin-bottom: 0px;
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
 .crime-holder .crime-stat-progress-bar-container {
 	margin-bottom: 2px;
 	height: 8px;

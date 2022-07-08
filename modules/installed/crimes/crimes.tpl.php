@@ -111,7 +111,7 @@
                                                     </div>
                                                 {/if}
 											</div>	
-											<div class="progress crime-stat-progress-bar-controller-override">
+											<div class="progress crime-stat-progress-bar-controller-override-bottom">
 												<div class="progress-bar crime-stat-progress-bar-container" role="progressbar" style="background-color:{stlColour};width:{stlRatio}%">
 												</div>
 
