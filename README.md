@@ -1,4 +1,4 @@
-# Gangster-Legends-V2
+# Criminalization
 
 Gangster Legends v2 is a open source PBBG game engine written in PHP using a MySQL backend.
 
