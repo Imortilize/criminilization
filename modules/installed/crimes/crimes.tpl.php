@@ -50,7 +50,9 @@
 								</span> 
 
 								<span class="stat-distribution-header">
-                                    <img class="stat-distribution-header-bonus-icon" src="modules/installed/crimes/images/bonus1.png" />
+                                    <span class="stat-distribution-header-bonus-icon">
+                                        <i class="fa-solid fa-fire"></i>
+                                    </span>
                                     <span class="stat-distribution-header-text">
 									    Stats
                                     </span>
