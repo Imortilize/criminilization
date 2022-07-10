@@ -4,7 +4,66 @@
 
         public $locationHolder = '
 
-            <div class="panel panel-default">
+        <div class="main-panel-container">
+			<div class="main-panel">
+				<div class="main-heading-background">
+					<div class="main-panel-heading">Travel</div>
+				</div>
+				<div class="main-panel-body">
+					<div class="main-panel-background">
+                        <div class="info-header-holder">
+							<p>
+                                <span class="info-header-city">
+                                    City
+								</span> 
+
+								<span class="info-header-cost">
+									Cost
+								</span> 
+
+								<span class="info-header-distance">
+									Distance
+								</span> 
+
+								<span class="info-header-select">
+								</span> 
+							</p>
+						</div>
+
+                        {#each locations}
+                            <div class="location-holder">
+                                <div class="location-holder-container">
+                                    <div class="location-text">
+                                        {location} 
+                                    </div> 
+
+                                    <div class="location-cost-text">
+                                        {#money cost}
+                                    </div> 
+
+                                    <div class="location-distance-text">
+                                        {number_format distance} Km
+                                    </div> 
+
+                                    <div class="location-select">
+										<input type="radio" class ="input" id="location{id}" name="location-select">
+									</div> 
+                                </div>
+                            </div>
+                        {/each} 
+                    </div>
+                    <div class="button-commit-background">
+                        {#if locations}
+                            <div class="button-commit-holder">
+                                <a class="btn btn-commit" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                            </div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--  <div class="panel panel-default">
                 <div class="panel-heading">Travel</div>
                 <div class="panel-body">
                     {#each locations}
@@ -23,20 +82,8 @@
                     </div>
                     {/each}
                 </div>
-            </div>
+            </div>-->
         ';
-
-        public $locationsHolder = '
-        {#each locations}
-        <div class="crime-holder">
-            <p>
-                <span class="action">
-                    {name}
-                </span>
-
-        </div>
-        {/each}';
-
 
         public $locationsList = '
             <table class="table table-condensed table-striped table-bordered table-responsive">

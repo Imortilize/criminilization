@@ -72,7 +72,6 @@
 	box-shadow: 0 5px 5px rgb(0 0 0 / 15%);
 	background-color: rgba(var(--message-background-color), 0.5);
 	background-image: url('/themes/themeBuilder/images/solid.png');
-	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 /* CRIME HEADING */
