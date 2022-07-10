@@ -43,6 +43,10 @@
 
             $current = $this->getLocation($this->user->info->US_location, true);
             $currentDistance = explode('-', $current->L_distance);
+
+            // Process the locations
+            $reachableLocations = null;
+            $unreachableLocations = null;
             foreach ($locations as $location) {
 
                 $hook = new Hook("alterModuleData");
@@ -58,10 +62,11 @@
                     $currentDistance[0], $currentDistance[1],
                     $location['distance'][0], $location['distance'][1]
                 );
-
+                
                 $vehicle = $this->db->select("SELECT * FROM vehicles where V_id = :id", array(
                     ":id" => $this->user->info->US_vehicle
                 ));
+                
                 if (!isset($vehicle['V_id'])) {
                     $vehicle['V_fuel'] = 2;
                     $vehicle['V_range'] = 4;
@@ -69,21 +74,32 @@
                     $vehicle['V_max'] = 4000;
                 }
 
-                $data[] = array(
-                    "location" => $location["L_name"],
-                    "cost" => ($distance * $vehicle['V_fuel']),
-                    "distance" => $distance,
-                    "id" => $location["L_id"],
-                    "cooldown" => $vehicle['V_range'],
-                    "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
-                );
-
+                $maxVehicleDistance = $vehicle['V_max'];
+                if ($maxVehicleDistance >= $distance) {
+                    $reachableLocations[] = array(
+                        "location" => $location["L_name"],
+                        "cost" => ($distance * $vehicle['V_fuel']),
+                        "distance" => $distance,
+                        "id" => $location["L_id"],
+                        "cooldown" => $vehicle['V_range'],
+                        "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
+                    );
+                } else {
+                    $unreachableLocations[] = array(
+                        "location" => $location["L_name"],
+                        "cost" => ($distance * $vehicle['V_fuel']),
+                        "distance" => $distance,
+                        "id" => $location["L_id"],
+                        "cooldown" => $vehicle['V_range'],
+                        "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
+                    );
+                }  
             }
 
             $this->html .= $this->page->buildElement('locationHolder', array(
-                "locations" => $data
+                "reachableLocations" => $reachableLocations,
+                "unreachableLocations" => $unreachableLocations,
             ));
-
         }
 
         public function method_fly() {

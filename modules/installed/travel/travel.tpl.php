@@ -7,11 +7,18 @@
         <div class="main-panel-container">
 			<div class="main-panel">
 				<div class="main-heading-background">
-					<div class="main-panel-heading">Travel</div>
+					<div class="main-panel-heading">Travel</div>        
 				</div>
+
 				<div class="main-panel-body">
 					<div class="main-panel-background">
-                        <div class="info-header-holder">
+                        <div class="main-tabs">
+                            <ul class="nav nav-tabs main-nav-tabs">
+                                <li class="active"><a class="tab" data-toggle="tab" href="#reachable">Reachable</a></li>
+                                <li><a class="tab" data-toggle="tab" href="#unreachable">Unreachable</a></li>
+                            </ul>
+                        </div>     
+                        <div class="main-panel-header-holder">
 							<p>
                                 <span class="info-header-city">
                                     City
@@ -30,59 +37,66 @@
 							</p>
 						</div>
 
-                        {#each locations}
-                            <div class="location-holder">
-                                <div class="location-holder-container">
-                                    <div class="location-text">
-                                        {location} 
-                                    </div> 
+                        <div class="tab-content">
+                            <div id="reachable" class="tab-pane fade in active">
+                                {#each reachableLocations}
+                                    <div class="location-holder">
+                                        <div class="location-holder-container">
+                                            <div class="location-text">
+                                                {location} 
+                                            </div> 
 
-                                    <div class="location-cost-text">
-                                        {#money cost}
-                                    </div> 
+                                            <div class="location-cost-text">
+                                                {#money cost}
+                                            </div> 
 
-                                    <div class="location-distance-text">
-                                        {number_format distance} Km
-                                    </div> 
+                                            <div class="location-distance-text">
+                                                {number_format distance} Km
+                                            </div> 
 
-                                    <div class="location-select">
-										<input type="radio" class ="input" id="location{id}" name="location-select">
-									</div> 
-                                </div>
+                                            <div class="location-select">
+                                                <input type="radio" class ="input" id="location{id}" name="location-select">
+                                            </div> 
+                                        </div>
+                                    </div>
+                                {/each} 
                             </div>
-                        {/each} 
+
+                            <div id="unreachable" class="tab-pane fade">
+                                {#each unreachableLocations}
+                                    <div class="location-holder">
+                                        <div class="location-holder-container">
+                                            <div class="location-text">
+                                                {location} 
+                                            </div> 
+
+                                            <div class="location-cost-text">
+                                                {#money cost}
+                                            </div> 
+
+                                            <div class="location-distance-text">
+                                                {number_format distance} Km
+                                            </div> 
+
+                                            <div class="location-select">
+                                                <input type="radio" class ="input" id="location{id}" name="location-select">
+                                            </div> 
+                                        </div>
+                                    </div>
+                                {/each} 
+                            </div>
+                        </div>
                     </div>
-                    <div class="button-commit-background">
-                        {#if locations}
+                    {#if locations}
+                        <div class="button-commit-background">
                             <div class="button-commit-holder">
-                                <a class="btn btn-commit" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
                             </div>
-                        {/if}
-                    </div>
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
-
-          <!--  <div class="panel panel-default">
-                <div class="panel-heading">Travel</div>
-                <div class="panel-body">
-                    {#each locations}
-                    <div class="crime-holder">
-                        <p>
-                            <span class="action">
-                                {location} - <span class="text-{class}">{number_format distance} Km</span>
-                            </span>
-                            <span class="cooldown">
-                                <small>({cooldown} minutes)</small> &nbsp;&nbsp;&nbsp;&nbsp;{#money cost}
-                            </span>
-                            <span class="commit">
-                                <a href="?page=travel&action=fly&location={id}">Travel</a>
-                            </span>
-                            </p>
-                    </div>
-                    {/each}
-                </div>
-            </div>-->
         ';
 
         public $locationsList = '

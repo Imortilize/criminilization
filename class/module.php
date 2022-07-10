@@ -146,7 +146,7 @@
                 
             }
         }
-        
+
         public function getCar($carID, $info = false) {
         
             $car = $this->db->prepare("SELECT * FROM cars WHERE CA_id = :car");
@@ -166,6 +166,29 @@
             } else {
                 
                 return 'Car dosent exist!';
+                
+            } 
+        }
+        
+        public function getVehicle($id, $info = false) {
+        
+            $vehicle = $this->db->prepare("SELECT * FROM vehicles WHERE V_id = :id");
+            $vehicle->bindParam(":id", $id);
+            $vehicle->execute();
+            
+            $vehicleInfo = $vehicle->fetchObject();
+            
+            if (isset($vehicleInfo->CA_id)) {
+                
+                if ($info) {
+                    return $vehicleInfo;
+                } else {
+                    return $vehicleInfo->CA_name;
+                }
+                
+            } else {
+                
+                return 'Vehicle dosent exist!';
                 
             }
             

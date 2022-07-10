@@ -13,14 +13,6 @@
 			// Check crime timer and clock committing a crime until the timer is complete
             if (!$this->user->checkTimer('crime')) {
 				
-				/*$crimeError = array(
-					"timer" => "crime",
-					"text"=>'You can\'t commit another crime untill your timer is up!',
-					"time" => $this->user->getTimer("crime")
-				);
-				$this->html .= $this->page->buildElement('timer', $crimeError);*/
-
-				// TODO: Add a crime cooldown in progress panel....
 				if (count($this->alerts) == 0) {
 					$this->alerts[] = $this->page->buildElement('crimeCooldown', array(
 						"name" => "Crimes",
