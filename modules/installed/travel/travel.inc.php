@@ -42,7 +42,7 @@
             ));
 
             $current = $this->getLocation($this->user->info->US_location, true);
-            $currentDistance = explode('-', $current->L_distance);
+            $currentDistance = explode(',', $current->L_distance);
 
             // Process the locations
             $reachableLocations = null;
@@ -57,7 +57,7 @@
                 );
                 $location = $hook->run($hookData, 1)["data"];
 
-                $location['distance'] = explode('-', $location['L_distance']);
+                $location['distance'] = explode(',', $location['L_distance']);
                 $distance = $this->distance(
                     $currentDistance[0], $currentDistance[1],
                     $location['distance'][0], $location['distance'][1]
@@ -123,9 +123,9 @@
                 $vehicle['V_max'] = 4000;
             }
             $current = $this->getLocation($this->user->info->US_location, true);
-            $currentDistance = explode('-', $current->L_distance);
+            $currentDistance = explode(',', $current->L_distance);
 
-            $location['distance'] = explode('-', $location['L_distance']);
+            $location['distance'] = explode(',', $location['L_distance']);
             $distance = $this->distance(
                 $currentDistance[0], $currentDistance[1],
                 $location['distance'][0], $location['distance'][1]
