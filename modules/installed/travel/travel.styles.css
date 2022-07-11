@@ -3,6 +3,8 @@
 :root {
 	--vehicle-color: 135, 206, 250;
 	--vehicle-distance-color: 0, 195, 0;
+	--unreachable-light: 110, 23, 3;
+	--unreachable-dark: 82, 18, 4;
 }
 
 /* MAIN PANEL */
@@ -268,7 +270,38 @@
 	overflow: hidden;
 }
 
-.location-holder .location-holder-container {
+.location-holder:nth-child(odd) {
+	background-color: var(--gray-lighter);
+ 	background-image: url('/themes/themeBuilder/images/arches.png');
+}
+
+.location-holder:nth-child(even) {
+	background-color: var(--gray-light);
+  	background-image: url('/themes/themeBuilder/images/arches.png');
+}
+
+.location-holder-unreachable {
+    position: relative;
+    background-color: var(--gray-lighter);
+    border-bottom: 1px solid var(--gray);
+	border-left: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+    border-radius: 0px;
+    margin-bottom: 0px;
+	overflow: hidden;
+}
+
+.location-holder-unreachable:nth-child(odd) {
+	background-color: rgba(var(--unreachable-dark), 0.5);
+  	background-image: url('/themes/themeBuilder/images/arches.png');
+}
+
+.location-holder-unreachable:nth-child(even) {
+	background-color: rgba(var(--unreachable-light), 0.5);
+  	background-image: url('/themes/themeBuilder/images/arches.png');
+}
+
+.location-holder-container {
 	margin: 0px;
 	display: flex;
 	flex-direction: row;
@@ -276,17 +309,7 @@
 	padding: 5px 0px 5px 0px;  
 }
 
-.location-holder:nth-child(odd) {
-  	background-color: var(--gray-lighter);
-	background-image: url('/themes/themeBuilder/images/arches.png');
-}
-
-.location-holder:nth-child(even) {
-  	background-color: var(--gray-light);
-	background-image: url('/themes/themeBuilder/images/arches.png');
-}
-
-.location-holder .location-image-holder {
+.location-image-holder {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: flex-start;
@@ -299,13 +322,13 @@
 	text-align: left;
 }
 
-.location-holder .location-image {
+.location-image {
     border: 1px solid var(--gray-lighter);
     border-radius: 4px;
     box-shadow: 2px 3px 6px 0px rgb(0 0 0 / 35%);
 }
 
-.location-holder .location-cost-text {
+.location-cost-text {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: flex-start;
@@ -320,7 +343,7 @@
 	border-right: 1px dotted var(--gray);
 }
 
-.location-holder .location-distance-text {
+.location-distance-text {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: flex-start;
@@ -334,7 +357,7 @@
 	border-right: 1px dotted var(--gray);
 }
 
-.location-holder .location-select {
+.location-select {
 	margin: auto;
 	justify-content: flex-end;
 	align-items: center;
