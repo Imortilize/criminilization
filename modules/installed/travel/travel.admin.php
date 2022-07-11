@@ -27,10 +27,6 @@
         }
 
         public function upload($id) {
-            if (!isset($this->methodData->id)) {
-                return $this->html = $this->page->buildElement("error", array("text" => "No location ID specified"));
-            }
-
             if (!$_FILES["image"]) {
                 return $this->html = $this->page->buildElement("error", array("text" => "No image file specified"));
             }
