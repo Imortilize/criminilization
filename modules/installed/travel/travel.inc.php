@@ -43,6 +43,10 @@
 
             $current = $this->getLocation($this->user->info->US_location, true);
             $currentDistance = explode('-', $current->L_distance);
+
+            // Process the locations
+            $reachableLocations = null;
+            $unreachableLocations = null;
             foreach ($locations as $location) {
 
                 $hook = new Hook("alterModuleData");
@@ -58,10 +62,11 @@
                     $currentDistance[0], $currentDistance[1],
                     $location['distance'][0], $location['distance'][1]
                 );
-
+                
                 $vehicle = $this->db->select("SELECT * FROM vehicles where V_id = :id", array(
                     ":id" => $this->user->info->US_vehicle
                 ));
+                
                 if (!isset($vehicle['V_id'])) {
                     $vehicle['V_fuel'] = 2;
                     $vehicle['V_range'] = 4;
@@ -69,21 +74,36 @@
                     $vehicle['V_max'] = 4000;
                 }
 
-                $data[] = array(
-                    "location" => $location["L_name"],
-                    "cost" => ($distance * $vehicle['V_fuel']),
-                    "distance" => $distance,
-                    "id" => $location["L_id"],
-                    "cooldown" => $vehicle['V_range'],
-                    "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
-                );
-
+                $maxVehicleDistance = $vehicle['V_max'];
+                if ($maxVehicleDistance >= $distance) {
+                    $reachableLocations[] = array(
+                        "location" => $location["L_name"],
+                        "cost" => ($distance * $vehicle['V_fuel']),
+                        "distance" => $distance,
+                        "id" => $location["L_id"],
+                        "cooldown" => $vehicle['V_range'],
+                        "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
+                    );
+                } else {
+                    $unreachableLocations[] = array(
+                        "location" => $location["L_name"],
+                        "cost" => ($distance * $vehicle['V_fuel']),
+                        "distance" => $distance,
+                        "id" => $location["L_id"],
+                        "cooldown" => $vehicle['V_range'],
+                        "class" => $vehicle['V_max'] <= $distance ? "danger" : "success",
+                    );
+                }  
             }
 
+            $vehicleName = $vehicle['V_name'];
+            $vehicleDistance = $vehicle['V_max'];
             $this->html .= $this->page->buildElement('locationHolder', array(
-                "locations" => $data
+                "reachableLocations" => $reachableLocations,
+                "unreachableLocations" => $unreachableLocations,
+                "vehicleName" => $vehicleName,
+                "vehicleDistance" => $vehicleDistance
             ));
-
         }
 
         public function method_fly() {
@@ -111,13 +131,13 @@
                 $location['distance'][0], $location['distance'][1]
             );
 
-            $hook = new Hook("alterModuleData");
+            /*$hook = new Hook("alterModuleData");
             $hookData = array(
                 "module" => "travel",
                 "user" => $this->user,
                 "data" => $location
             );
-            $location = $hook->run($hookData, 1)["data"];
+            $location = $hook->run($hookData, 1)["data"];*/
 
             if (!$location){
                 return $this->error("This location does not exist!");
@@ -136,9 +156,9 @@
                     return $this->error("Your vehicle can not go that range!");
                 } else {
 
-                    $this->user->subtract("US_money", ($distance * $vehicle['V_fuel']));
+                    $travelCost = ($distance * $vehicle['V_fuel']);
+                    $this->user->subtract("US_money", $travelCost);
                     $this->user->set("US_location", $location["L_id"]);
-
                     $this->user->updateTimer('travel', $vehicle['V_range'], true);
 
                     $actionHook = new hook("userAction");
@@ -151,8 +171,7 @@
                     );
                     $actionHook->run($action);
 
-                    $this->alerts[] = $this->page->buildElement('success', array("text" => 'You traveled to '.$location["L_name"].' for '.$this->money($location["L_cost"]).'!'));
-
+                    $this->alerts[] = $this->page->buildElement('success', array("text" => 'You traveled to ' . $location["L_name"] . ' for '. $travelCost .'!'));
                 }
             }
 
