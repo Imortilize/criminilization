@@ -61,7 +61,7 @@
                 
             }
             
-            $locations = $this->db->prepare("SELECT L_id as 'id', L_name as 'name', L_cost as 'cost' FROM locations");
+            $locations = $this->db->prepare("SELECT L_id as 'id', L_name as 'name' /*, L_cost as 'cost'*/ FROM locations");
             $locations->execute();
             $locations = $locations->fetchAll(PDO::FETCH_ASSOC);
 
@@ -256,7 +256,7 @@
                     $location->execute();
                     $location = $location->fetch(PDO::FETCH_ASSOC);
 
-                    $value = $location["L_cost"]; 
+                    /*$value = $location["L_cost"]; 
                     
                     if ($value < $this->user->info->US_money) {
                         $cost += $value;
@@ -270,8 +270,7 @@
                             "text"=>'You do not have enough money to do this, you need '.$this->money($value).'!'
                         ));
                         
-                    }
-            
+                    }*/
                 }
             }
             

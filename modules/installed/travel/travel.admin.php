@@ -13,13 +13,9 @@
                 SELECT
                     L_id as 'id',
                     L_name as 'name',
-                    L_cost as 'cost',
-                    L_bullets as 'bullets',
-                    L_bulletCost as 'bulletCost',
-                    L_cooldown as 'cooldown',
                     L_distance as 'distance'
                 FROM locations" . $add . "
-                ORDER BY L_name, L_cost";
+                ORDER BY L_name";
 
             if ($locationsID == "all") {
                 return $this->db->selectAll($sql);
@@ -30,6 +26,21 @@
             }
         }
 
+        public function upload($id) {
+            if (!isset($this->methodData->id)) {
+                return $this->html = $this->page->buildElement("error", array("text" => "No location ID specified"));
+            }
+
+            if (!$_FILES["image"]) {
+                return $this->html = $this->page->buildElement("error", array("text" => "No image file specified"));
+            }
+
+            if (isset($_FILES["image"])) {
+                $new = __DIR__ . "/images/" . $id . ".jpg";
+                move_uploaded_file($_FILES["image"]["tmp_name"], $new);
+            }
+        }
+
         private function validateLocations($locations) {
             $errors = array();
 
@@ -37,13 +48,7 @@
                 $errors[] = "Location name is to short, this must be at least 5 characters";
             }
 
-
-            if (!intval($locations["cost"])) {
-                $errors[] = "No cost specified";
-            }
-
             return $errors;
-
         }
 
         public function method_new () {
@@ -60,21 +65,20 @@
                     }
                 } else {
                     $distance = $this->methodData->latitude.'-'.$this->methodData->longitude;
-                    $insert = $this->db->insert("
-                        INSERT INTO locations (L_name, L_cost, L_bullets, L_bulletCost, L_cooldown, L_distance)  VALUES (:name, :cost, :bullets, :bulletCost, :cooldown, :distance);
-                    ", array(
-                        ":name" => $this->methodData->name,
-                        ":cost" => $this->methodData->cost,
-                        ":bullets" => $this->methodData->bullets,
-                        ":bulletCost" => $this->methodData->bulletCost,
-                        ":distance" => $distance,
-                        ":cooldown" => $this->methodData->cooldown
-                    ));
 
+                    $insert = $this->db->prepare("
+                        INSERT INTO locations (L_name, L_distance)  VALUES (:name, :distance);
+                    ");
+                    $insert->bindParam(":name", $this->methodData->name);
+                    $insert->bindParam(":distance", $distance);                     
+                    $insert->execute();
+
+                    // Upload the image as required
+                    $this->upload($this->db->lastInsertId());
+
+                    // Display that it has successfully been updated
                     $this->html .= $this->page->buildElement("success", array("text" => "This location has been created"));
-
                 }
-
             }
 
             $locations["editType"] = "new";
@@ -99,22 +103,20 @@
                     }
                 } else {
                     $distance = $this->methodData->latitude.'-'.$this->methodData->longitude;
-                    $update = $this->db->update("
-                        UPDATE locations SET L_name = :name, L_cost = :cost, L_bullets = :bullets, L_bulletCost = :bulletCost, L_cooldown = :cooldown, L_distance = :distance WHERE L_id = :id
-                    ", array(
-                        ":name" => $this->methodData->name,
-                        ":cost" => $this->methodData->cost,
-                        ":bullets" => $this->methodData->bullets,
-                        ":bulletCost" => $this->methodData->bulletCost,
-                        ":cooldown" => $this->methodData->cooldown,
-                        ":distance" => $distance,
-                        ":id" => $this->methodData->id
-                    ));
+                    $update = $this->db->prepare("
+                        UPDATE locations SET L_name = :name, L_distance = :distance WHERE L_id = :id
+                    ");
+                    $update->bindParam(":name", $this->methodData->name); 
+                    $update->bindParam(":distance", $distance);
+                    $update->bindParam(":id", $this->methodData->id);
+                    $update->execute();
 
+                    // Upload the image
+                    $this->upload($this->methodData->id);
+
+                    // Display the location has been updated
                     $this->html .= $this->page->buildElement("success", array("text" => "This location has been updated"));
-
                 }
-
             }
 
             $locations["editType"] = "edit";
@@ -150,7 +152,6 @@
 
             }
 
-
             $this->html .= $this->page->buildElement("locationsDelete", $locations);
         }
 
@@ -159,7 +160,5 @@
             $this->html .= $this->page->buildElement("locationsList", array(
                 "locations" => $this->getLocations()
             ));
-
         }
-
     }

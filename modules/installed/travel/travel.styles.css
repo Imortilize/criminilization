@@ -238,7 +238,7 @@
 	background-image: url('/themes/themeBuilder/images/arches.png');
 }
 
-.location-holder .location-text {
+.location-holder .location-image-holder {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: flex-start;
@@ -247,9 +247,14 @@
 	width: 65%;
 	min-width: 65%;
 	max-width: 65%;
-	font-size: 0.95em;
 	padding-left: 3%;
 	text-align: left;
+}
+
+.location-holder .location-image {
+    border: 1px solid var(--gray-lighter);
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px 0px rgb(0 0 0 / 35%);
 }
 
 .location-holder .location-cost-text {

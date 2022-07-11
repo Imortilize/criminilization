@@ -42,8 +42,8 @@
                                 {#each reachableLocations}
                                     <div class="location-holder">
                                         <div class="location-holder-container">
-                                            <div class="location-text">
-                                                {location} 
+                                            <div class="location-image-holder">
+                                                <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
                                             <div class="location-cost-text">
@@ -60,14 +60,20 @@
                                         </div>
                                     </div>
                                 {/each} 
+
+                                <div class="button-commit-background">
+                                    <div class="button-commit-holder">
+                                        <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="unreachable" class="tab-pane fade">
                                 {#each unreachableLocations}
                                     <div class="location-holder">
                                         <div class="location-holder-container">
-                                            <div class="location-text">
-                                                {location} 
+                                            <div class="location-image-holder">
+                                                <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
                                             <div class="location-cost-text">
@@ -87,13 +93,6 @@
                             </div>
                         </div>
                     </div>
-                    {#if locations}
-                        <div class="button-commit-background">
-                            <div class="button-commit-holder">
-                                <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
-                            </div>
-                        </div>
-                    {/if}
                 </div>
             </div>
         </div>
@@ -104,10 +103,6 @@
                 <thead>
                     <tr>
                         <th>Locations</th>
-                        <th width="120px">Cost ($)</th>
-                        <th width="120px">Bullets</th>
-                        <th width="120px">Cost per Bullet ($)</th>
-                        <th width="120px">Cooldown (sec)</th>
                         <th width="100px">Actions</th>
                     </tr>
                 </thead>
@@ -115,10 +110,6 @@
                     {#each locations}
                         <tr>
                             <td>{name}</td>
-                            <td>{#money cost}</td>
-                            <td>{bullets}</td>
-                            <td>${bulletCost}</td>
-                            <td>{cooldown} seconds</td>
                             <td>
                                 [<a href="?page=admin&module=travel&action=edit&id={id}">Edit</a>]
                                 [<a href="?page=admin&module=travel&action=delete&id={id}">Delete</a>]
@@ -142,7 +133,7 @@
 
         ';
         public $locationsForm = '
-            <form method="post" action="?page=admin&module=travel&action={editType}&id={id}">
+            <form method="post" action="?page=admin&module=travel&action={editType}&id={id}" enctype="multipart/form-data">
                 <div class="form-group">
                     <label class="pull-left">Location Name</label>
                     <input type="text" class="form-control" name="name" value="{name}">
@@ -162,26 +153,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="pull-left">Cost ($)</label>
-                    <input type="number" class="form-control" name="cost" value="{cost}">
-                </div>
-                <div class="form-group">
-                    <label class="pull-left">Bullets</label>
-                    <input type="number" class="form-control" name="bullets" value="{bullets}">
-                </div>
-                <div class="form-group">
-                    <label class="pull-left">Bullet Cost ($)</label>
-                    <input type="number" class="form-control" name="bulletCost" value="{bulletCost}">
-                </div>
-                <div class="form-group">
-                    <label class="pull-left">Cooldown (sec)</label>
-                    <input type="number" class="form-control" name="cooldown" value="{cooldown}">
-                </div>
+                    <label class="pull-left">Image <small>(Leave blank to stay the same)</small></label>
+                    <input type="file" class="form-control" name="image" value="">
+                </div> 
 
                 <div class="text-right">
                     <button class="btn btn-default" name="submit" type="submit" value="1">Save</button>
                 </div>
             </form>
         ';
-
     }

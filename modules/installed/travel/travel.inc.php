@@ -127,13 +127,13 @@
                 $location['distance'][0], $location['distance'][1]
             );
 
-            $hook = new Hook("alterModuleData");
+            /*$hook = new Hook("alterModuleData");
             $hookData = array(
                 "module" => "travel",
                 "user" => $this->user,
                 "data" => $location
             );
-            $location = $hook->run($hookData, 1)["data"];
+            $location = $hook->run($hookData, 1)["data"];*/
 
             if (!$location){
                 return $this->error("This location does not exist!");
@@ -152,9 +152,9 @@
                     return $this->error("Your vehicle can not go that range!");
                 } else {
 
-                    $this->user->subtract("US_money", ($distance * $vehicle['V_fuel']));
+                    $travelCost = ($distance * $vehicle['V_fuel']);
+                    $this->user->subtract("US_money", $travelCost);
                     $this->user->set("US_location", $location["L_id"]);
-
                     $this->user->updateTimer('travel', $vehicle['V_range'], true);
 
                     $actionHook = new hook("userAction");
@@ -167,8 +167,7 @@
                     );
                     $actionHook->run($action);
 
-                    $this->alerts[] = $this->page->buildElement('success', array("text" => 'You traveled to '.$location["L_name"].' for '.$this->money($location["L_cost"]).'!'));
-
+                    $this->alerts[] = $this->page->buildElement('success', array("text" => 'You traveled to ' . $location["L_name"] . ' for '. $travelCost .'!'));
                 }
             }
 

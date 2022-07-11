@@ -31,5 +31,17 @@ if (radioButtons.length) {
 			const href = (btn.href + "&" + locationIndex);
 			location.href = href;
 		};
+
+       /* const tabs = document.querySelectorAll('.tab'); 
+        if (tabs) {
+            for (let i = 0; i < tabs.length; i++) {
+                const tab = tabs[i];
+                tab.onclick = function (event) {
+                    const currentTarget = event.currentTarget;
+                    const tabText = currentTarget.innerHTML;
+                    btn.enabled = (tabText === "Reachable");
+                }
+            }
+        }*/
 	}
 }
