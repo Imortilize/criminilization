@@ -157,6 +157,7 @@
 .main-nav-tabs {
     border: 1px solid var(--gray);
     padding: 0px 0px 1px 0px;
+	font-size: 1.15em;
 }
 
 .tab {
@@ -373,6 +374,7 @@
 }
 
 .btn {
+	font-size: 1.25em;
 	background-color: var(--gray-light);
 	padding: 10px 50px;
 	border-radius: 8px;
