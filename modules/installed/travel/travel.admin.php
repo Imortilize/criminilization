@@ -60,7 +60,7 @@
                         $this->html .= $this->page->buildElement("error", array("text" => $error));
                     }
                 } else {
-                    $distance = $this->methodData->latitude.'-'.$this->methodData->longitude;
+                    $distance = $this->methodData->latitude.','.$this->methodData->longitude;
 
                     $insert = $this->db->prepare("
                         INSERT INTO locations (L_name, L_distance)  VALUES (:name, :distance);
@@ -98,7 +98,7 @@
                         $this->html .= $this->page->buildElement("error", array("text" => $error));
                     }
                 } else {
-                    $distance = $this->methodData->latitude.'-'.$this->methodData->longitude;
+                    $distance = $this->methodData->latitude.','.$this->methodData->longitude;
                     $update = $this->db->prepare("
                         UPDATE locations SET L_name = :name, L_distance = :distance WHERE L_id = :id
                     ");
@@ -117,7 +117,7 @@
 
             $locations["editType"] = "edit";
             if (isset($locations['distance'])) {
-                $locations['distance'] = explode('-', $locations['distance']);
+                $locations['distance'] = explode(',', $locations['distance']);
                 $locations['latitude'] = $locations['distance'][0];
                 $locations['longitude'] = $locations['distance'][1];
             }
