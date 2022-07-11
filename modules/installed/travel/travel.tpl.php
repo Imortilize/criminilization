@@ -79,7 +79,7 @@
 
                             <div id="unreachable" class="tab-pane fade">
                                 {#each unreachableLocations}
-                                    <div class="location-holder">
+                                    <div class="location-holder-unreachable">
                                         <div class="location-holder-container">
                                             <div class="location-image-holder">
                                                 <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
@@ -94,7 +94,7 @@
                                             </div> 
 
                                             <div class="location-select">
-                                                <input type="radio" class ="input" id="location{id}" name="location-select">
+                                                <input type="radio" class ="input" id="location{id}" name="location-select" disabled="true">
                                             </div> 
                                         </div>
                                     </div>
