@@ -7,7 +7,16 @@
         <div class="main-panel-container">
 			<div class="main-panel">
 				<div class="main-heading-background">
-					<div class="main-panel-heading">Travel</div>        
+					<div class="main-panel-heading">Travel</div>    
+                   <!--<div class="main-panel-info">
+                      
+                        Your current vehicle is <span class="main-panel-info-vehicle-name">{vehicleName}</span> and you can travel <span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span> with it.
+                    </div>   -->
+                    
+                    <p class="main-panel-info">
+                        Your current vehicle is&nbsp;<span class="main-panel-info-vehicle-name">{vehicleName}</span>&nbsp;and you can travel&nbsp;<span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span>&nbsp;with it.
+                    </p>
+
 				</div>
 
 				<div class="main-panel-body">

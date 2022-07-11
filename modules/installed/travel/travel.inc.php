@@ -96,9 +96,13 @@
                 }  
             }
 
+            $vehicleName = $vehicle['V_name'];
+            $vehicleDistance = $vehicle['V_max'];
             $this->html .= $this->page->buildElement('locationHolder', array(
                 "reachableLocations" => $reachableLocations,
                 "unreachableLocations" => $unreachableLocations,
+                "vehicleName" => $vehicleName,
+                "vehicleDistance" => $vehicleDistance
             ));
         }
 
