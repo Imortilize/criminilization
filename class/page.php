@@ -176,10 +176,10 @@ class page {
                     $this->addMenu("actions", "Actions", "actionMenu", 10);
                     $this->addMenu("location", $locationName, "locationMenu", 20);
                     $this->addMenu("money", "Money", "moneyMenu", 30);
-                    $this->addMenu("casino", "Gambling", "casinoMenu", 40);
+                    //$this->addMenu("casino", "Gambling", "casinoMenu", 40);
                     $this->addMenu("gang", "Gangs", "gangMenu", 50);
                     $this->addMenu("kill", "Murder", "killMenu", 60);
-                    $this->addMenu("points", $s->loadSetting("pointsName"), "pointsMenu", 70);
+                    //$this->addMenu("points", $s->loadSetting("pointsName"), "pointsMenu", 70);
                     $this->addMenu("account", "Account", "accountMenu", 80);
                 } else {
                     $this->addMenu("login", "Login", "loginMenu", 0);

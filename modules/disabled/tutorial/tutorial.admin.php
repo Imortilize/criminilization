@@ -111,9 +111,9 @@ class adminModule
         $modules = array();
         foreach ($this->page->modules as $key => $mod) {
             $mod['id'] = $key;
-            if (isset($mod["requireLogin"]) && $module["requireLogin"]) {
+            if (isset($mod["requireLogin"]) && $mod["requireLogin"]) {
                 if (!isset($mod["moduleCantBeDisabled"])) {
-                    $mod[] = array(
+                    $modules[] = array(
                         "id" => $mod['id'],
                         "name" => $mod['name'],
                     );
@@ -132,7 +132,7 @@ class adminModule
 
         $tutorial = $this->getTutorial($this->methodData->id);
 
-        if (!isset($property["id"])) {
+        if (!isset($tutorial["id"])) {
             return $this->html = $this->page->buildElement("error", array("text" => "This tutorial does not exist"));
         }
 
