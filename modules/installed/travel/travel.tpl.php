@@ -14,9 +14,14 @@
                     </div>   -->
                     
                     <p class="main-panel-info">
-                        Your current vehicle is&nbsp;<span class="main-panel-info-vehicle-name">{vehicleName}</span>&nbsp;and you can travel&nbsp;<span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span>&nbsp;with it.
+                        You are currently in&nbsp;<span class="main-panel-info-current-location">{currentLocation}</span>.&nbsp;Your current vehicle is&nbsp;<span class="main-panel-info-vehicle-name">{vehicleName}</span>&nbsp;and you can travel&nbsp;<span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span>&nbsp;with it.
                     </p>
 
+        
+
+                    <!--<p class="main-panel-info">
+                        <span data-timer-type="inline" data-timer="{travelTime}"></span>
+                    </p>-->
 				</div>
 
 				<div class="main-panel-body">

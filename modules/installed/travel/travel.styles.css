@@ -1,6 +1,7 @@
 /* COLORS */
 
 :root {
+	--current-location-color: 240, 128, 128;
 	--vehicle-color: 135, 206, 250;
 	--vehicle-distance-color: 0, 195, 0;
 	--unreachable-light: 110, 23, 3;
@@ -112,6 +113,11 @@
   	align-items: flex-end;
 	font-size: 1em;
 	font-weight: normal;
+}
+
+.main-panel-info .main-panel-info-current-location {
+	font-weight: bold;
+	color: rgba(var(--current-location-color));
 }
 
 .main-panel-info .main-panel-info-vehicle-name {
