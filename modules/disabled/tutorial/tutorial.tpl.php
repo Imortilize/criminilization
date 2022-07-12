@@ -43,7 +43,7 @@ class tutorialTemplate extends template {
     </form>
     ';
 
-    public $tutorialyDelete = '
+    public $tutorialDelete = '
     <form method="post" action="?page=admin&module=tutorial&action=delete&id={id}&commit=1">
         <div class="text-center">
             <p> Are you sure you want to delete this tutorial?</p>
