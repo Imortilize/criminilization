@@ -32,8 +32,8 @@
                     <p class="main-panel-info">
                         <span>
                             You are currently in
-                            <span class="main-panel-info-current-location">{currentLocation}</span>
-                            . Your current vehicle is
+                            <span class="main-panel-info-current-location">{currentLocation}</span>.
+                            Your current vehicle is
                             <span class="main-panel-info-vehicle-name">{vehicleName}</span>
                             and you can travel
                             <span class="main-panel-info-vehicle-distance">{number_format vehicleDistance} Km</span>
