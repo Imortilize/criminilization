@@ -87,12 +87,7 @@
                                             </div> 
 
                                             <div class="location-select">
-                                                {#if hasTravelCooldown}
-                                                    <input type="radio" class ="input" id="location{id}" name="location-select" disabled>
-                                                {/if}
-                                                {#unless hasTravelCooldown}
-                                                    <input type="radio" class ="input" id="location{id}" name="location-select">
-                                                {/unless}
+                                                <input type="radio" class ="input" id="location{id}" name="location-select">
                                             </div> 
                                         </div>
                                     </div>
@@ -101,7 +96,7 @@
                                 <div class="button-commit-background">
                                     <div class="button-commit-holder">
                                         {#if hasTravelCooldown}
-                                            <a class="btn disabled" id="commit-btn" data-redirect-when-done="?page=travel" data-timer-type="inline" data-timer="{travelTime}"></a>
+                                            <a class="btn disabled" id="commit-btn" href="?page=travel&action=fly" enable-with-text-when-done="Travel" data-timer-type="inline" data-timer="{travelTime}"></a>
                                         {/if}
                                         {#unless hasTravelCooldown}
                                             <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>

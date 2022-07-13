@@ -44,11 +44,12 @@ function checkTimer(interval) {
             $(this).parent().remove();
         }
 
-        const enableWhenDoneText = $(this).attr('enable-when-done');
+        const enableWhenDoneText = $(this).attr('enable-with-text-when-done');
         if((addClass == 'text-success') && (enableWhenDoneText !== undefined)) {
             $(this).removeClass("disabled");
-            $(this).removeAttribute("data-timer-type");
-            $(this).removeAttribute("data-timer");
+            $(this).removeAttr("data-timer-type");
+            $(this).removeAttr("data-timer");
+            $(this).removeAttr("enable-with-text-when-done");
             $(this).removeClass(removeClass).html(enableWhenDoneText);
             return;
         }
