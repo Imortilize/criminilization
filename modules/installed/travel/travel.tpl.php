@@ -78,9 +78,16 @@
                                                 <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
-                                            <div class="location-cost-text">
-                                                {#money cost}
-                                            </div> 
+                                            {#if canAffordToTravel}
+                                                <div class="location-cost-text">
+                                                    {#money cost}
+                                                </div> 
+                                            {/if}
+                                            {#unless canAffordToTravel}
+                                                <div class="location-cost-text-no-money">
+                                                    {#money cost}
+                                                </div> 
+                                            {/unless}
 
                                             <div class="location-distance-text">
                                                 {number_format distance} Km
@@ -113,9 +120,16 @@
                                                 <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
-                                            <div class="location-cost-text">
-                                                {#money cost}
-                                            </div> 
+                                            {#if canAffordToTravel}
+                                                <div class="location-cost-text">
+                                                    {#money cost}
+                                                </div> 
+                                            {/if}
+                                            {#unless canAffordToTravel}
+                                                <div class="location-cost-text-no-money">
+                                                    {#money cost}
+                                                </div> 
+                                            {/unless}
 
                                             <div class="location-distance-text">
                                                 {number_format distance} Km

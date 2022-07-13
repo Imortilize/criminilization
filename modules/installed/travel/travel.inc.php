@@ -2,7 +2,9 @@
 
     class travel extends module {
 
-        public $allowedMethods = array('location'=>array('type'=>'get'));
+        public $allowedMethods = array(
+            'location' => array('type' => 'GET')
+        );
 
         public $pageName = 'Airport';
 
@@ -74,7 +76,6 @@
                 $locationId = $location['L_id'];
                 $locationName = $location["L_name"];
                 $locationDistance = $location['L_distance'];
-                $travelCost = ($distance * $vehicleFuelCost);
 
                 /*$hook = new Hook("alterModuleData");
                 $hookData = array(
@@ -89,6 +90,11 @@
                     $currentDistance[0], $currentDistance[1],
                     $location['distance'][0], $location['distance'][1]
                 );
+
+                // Calculate the travel cost
+                $userMoney = $this->user->info->US_money;
+                $travelCost = ($distance * $vehicleFuelCost);
+                $canAffordToTravel = ($userMoney >= $travelCost);
                 
                 if ($maxVehicleDistance >= $distance) {
                     $reachableLocations[] = array(
@@ -97,6 +103,7 @@
                         "distance" => $distance,
                         "id" => $locationId,
                         "cooldown" => $travelCooldown,
+                        "canAffordToTravel" => $canAffordToTravel,
                         "hasTravelCooldown" => $hasTravelCooldown,
                     );
                 } else {
@@ -106,6 +113,7 @@
                         "distance" => $distance,
                         "id" => $locationId,
                         "cooldown" => $travelCooldown,
+                        "canAffordToTravel" => $canAffordToTravel,
                         "hasTravelCooldown" => $hasTravelCooldown,
                     );
                 }  
@@ -162,30 +170,29 @@
             if ($this->user->checkTimer('travel')) {
 
                 $currentLocationId = $this->user->info->US_location;
-                $newlocationName = $location["L_name"];
                 $newlocationId = $location["L_id"];
-                $vehicleFuel = $vehicle['V_fuel'];
-                $vehicleTravelDistance = $vehicle['V_max'];
-                $vehicleTravelTime = $vehicle['V_range'];
-                $travelCost = ($distance * $vehicleFuel);
 
-                // TODO: Make better
+                // Check we aren't trying to travel to the same location
                 if ($newlocationId == $currentLocationId) {
-
-                    $this->alerts[] = $this->page->buildElement('error', array("text" => 'You are already in ' . $newlocationName . '!'));
                     return;
                 } 
+      
+                $vehicleFuel = $vehicle['V_fuel'];
+                $travelCost = ($distance * $vehicleFuel);
                 
-                // TODO: Make better
+                // Check we have enough money to travel
                 if ($this->user->info->US_money < $travelCost) {
-
-                    $this->alerts[] = $this->page->buildElement('error', array("text" => 'You cant afford to travel here!'));
                     return;
                 }
-                
+
+                // Check we can travel the distance
+                $vehicleTravelDistance = $vehicle['V_max'];
                 if ($distance > $vehicleTravelDistance) {
-                    return $this->error("Your vehicle can not go that range!");
+                    return;
                 } 
+
+                $newlocationName = $location["L_name"];
+                $vehicleTravelTime = $vehicle['V_range'];
 
                 // Set user stats and show feedback                
                 $this->user->subtract("US_money", $travelCost);
@@ -210,5 +217,3 @@
             }
         }
     }
-
-
