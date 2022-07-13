@@ -18,6 +18,11 @@
                                 </p>
 							</div>
 						</div>
+                        <div class="button-continue-background">
+                            <div class="button-commit-holder">
+                                <a class="btn" id="continue-btn" href="?page=travel">Continue</a>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>

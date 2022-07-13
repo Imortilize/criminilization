@@ -25,6 +25,11 @@
 								{/unless}
 							</div>
 						</div>
+                        <div class="crime-button-background">
+                            <div class="crime-commit-holder">
+                                <a class="btn btn-crime-commit" id="continue-btn" href="?page=crimes">Continue</a>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -166,6 +171,11 @@
 								<p class="crime-cooldown-text">{text}</p>
 							</div>
 						</div>
+                        <div class="crime-button-background">
+                            <div class="crime-commit-holder">
+                                <a class="btn btn-crime-commit" id="continue-btn" href="?page=crimes">Refresh</a>
+                            </div>
+                        </div>
 					</div>
 				</div>
             </div>
