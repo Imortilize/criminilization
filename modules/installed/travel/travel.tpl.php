@@ -2,21 +2,44 @@
 
     class travelTemplate extends template {
 
+        public $locationChanged = '
+			<div class="main-panel-container-top-padded">
+				<div class="main-panel">
+					<div class="main-heading-background">
+						<div class="main-panel-heading">Travel</div>
+					</div>
+					<!--<img class="img-responsive" src="modules/installed/crimes/images/{id}.png" />-->
+					<div class="main-panel-body">
+						<div class="location-changed-background">
+							<div class="main-panel-message-holder">
+                                <p class="location-changed-header-text">Travel</p>
+                                <p class="location-changed-text">
+                                    You successfully travelled to&nbsp;<span class="location-changed-city-text">{location}</span>&nbsp;and this cost&nbsp;<span class="location-changed-money-text">${number_format cost}</span>&nbsp;.
+                                </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        ';
+
         public $locationHolder = '
 
         <div class="main-panel-container">
 			<div class="main-panel">
 				<div class="main-heading-background">
 					<div class="main-panel-heading">Travel</div>    
-                   <!--<div class="main-panel-info">
-                      
-                        Your current vehicle is <span class="main-panel-info-vehicle-name">{vehicleName}</span> and you can travel <span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span> with it.
-                    </div>   -->
-                    
                     <p class="main-panel-info">
-                        Your current vehicle is&nbsp;<span class="main-panel-info-vehicle-name">{vehicleName}</span>&nbsp;and you can travel&nbsp;<span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span>&nbsp;with it.
+                        <span>
+                            You are currently in
+                            <span class="main-panel-info-current-location">{currentLocation}</span>.
+                            Your current vehicle is
+                            <span class="main-panel-info-vehicle-name">{vehicleName}</span>
+                            and you can travel
+                            <span class="main-panel-info-vehicle-distance">{number_format vehicleDistance} Km</span>
+                            with it.
+                        </span>
                     </p>
-
 				</div>
 
 				<div class="main-panel-body">
@@ -55,9 +78,16 @@
                                                 <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
-                                            <div class="location-cost-text">
-                                                {#money cost}
-                                            </div> 
+                                            {#if canAffordToTravel}
+                                                <div class="location-cost-text">
+                                                    {#money cost}
+                                                </div> 
+                                            {/if}
+                                            {#unless canAffordToTravel}
+                                                <div class="location-cost-text-no-money">
+                                                    {#money cost}
+                                                </div> 
+                                            {/unless}
 
                                             <div class="location-distance-text">
                                                 {number_format distance} Km
@@ -72,7 +102,12 @@
 
                                 <div class="button-commit-background">
                                     <div class="button-commit-holder">
-                                        <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                        {#if hasTravelCooldown}
+                                            <a class="btn disabled" id="commit-btn" href="?page=travel&action=fly" enable-with-text-when-done="Travel" data-timer-type="inline" data-timer="{travelTime}"></a>
+                                        {/if}
+                                        {#unless hasTravelCooldown}
+                                            <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                        {/unless}
                                     </div>
                                 </div>
                             </div>
@@ -85,16 +120,23 @@
                                                 <img src="modules/installed/travel/images/{id}.jpg" class="img-fluid location-image" alt="Responsive image">
                                             </div> 
 
-                                            <div class="location-cost-text">
-                                                {#money cost}
-                                            </div> 
+                                            {#if canAffordToTravel}
+                                                <div class="location-cost-text">
+                                                    {#money cost}
+                                                </div> 
+                                            {/if}
+                                            {#unless canAffordToTravel}
+                                                <div class="location-cost-text-no-money">
+                                                    {#money cost}
+                                                </div> 
+                                            {/unless}
 
                                             <div class="location-distance-text">
                                                 {number_format distance} Km
                                             </div> 
 
                                             <div class="location-select">
-                                                <input type="radio" class ="input" id="location{id}" name="location-select" disabled="true">
+                                                <input type="radio" class ="input" id="location{id}" name="location-select" disabled>
                                             </div> 
                                         </div>
                                     </div>

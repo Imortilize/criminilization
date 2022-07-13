@@ -22,82 +22,83 @@
 				}
 				
 				return;
-            } else {
-				$crimes = $this->db->prepare("
-					SELECT * FROM crimes INNER JOIN ranks ON (R_id = C_level) ORDER BY C_level ASC
-				");
-				$crimes->execute();
+            } 
 
-				$crimePercs = explode('-', $this->user->info->US_crimes);
+			// No crime timer active, so show the crimes panel
+			$crimes = $this->db->prepare("
+				SELECT * FROM crimes INNER JOIN ranks ON (R_id = C_level) ORDER BY C_level ASC
+			");
+			$crimes->execute();
 
-				$crimeInfo = array();
-				while ($crime = $crimes->fetchObject()) {
+			$crimePercs = explode('-', $this->user->info->US_crimes);
 
-					$crimeID = $crime->C_id;
+			$crimeInfo = array();
+			while ($crime = $crimes->fetchObject()) {
 
-					// Calculate the crimes stat distributuon
-					[$distributionStat1, 
-					 $distributionStat2, 
-					 $distributionStat1Colour,
-					 $distributionStat2Colour,
-					 $distributionStat1Icon, 
-					 $distributionStat2Icon, 
-					 $isMixed, 
-					 $isOffence,
-					 $isDefence,
-					 $isStealth,
-					 $isOffDef,
-					 $isOffStl, 
-					 $isDefStl,
-					 $offRatio,
-					 $defRatio,
-					 $stlRatio,
-					 $bonus,
-					 $bonusColour,
-					 $bonusIcon,
-					 $bonusOffPercentage,
-					 $bonusDefPercentage,
-					 $bonusStlPercentage] = calculateStatDistribution(
-						$crime
-					);
+				$crimeID = $crime->C_id;
 
-					// Grab the stat distros and determine the crime stat indicators
+				// Calculate the crimes stat distributuon
+				[$distributionStat1, 
+					$distributionStat2, 
+					$distributionStat1Colour,
+					$distributionStat2Colour,
+					$distributionStat1Icon, 
+					$distributionStat2Icon, 
+					$isMixed, 
+					$isOffence,
+					$isDefence,
+					$isStealth,
+					$isOffDef,
+					$isOffStl, 
+					$isDefStl,
+					$offRatio,
+					$defRatio,
+					$stlRatio,
+					$bonus,
+					$bonusColour,
+					$bonusIcon,
+					$bonusOffPercentage,
+					$bonusDefPercentage,
+					$bonusStlPercentage] = calculateStatDistribution(
+					$crime
+				);
+
+				// Grab the stat distros and determine the crime stat indicators
 
 
-					// Create the crime info to display
-					$crimeInfo[] = array(
-						"name" => $crime->C_name,
-						"rank" => $crime->R_name,
-						"time" => $this->user->getTimer("crime-" . $crime->C_id),
-						"locked" => $crime->R_exp > $this->user->info->US_exp,
-						"cooldown" => $this->timeLeft($crime->C_cooldown),
-						"percent" => $crime->C_chance, 
-						"id" => $crimeID,
-						"statIndicator1Icon" => $distributionStat1Icon,
-						"statIndicator1Colour" => $distributionStat1Colour,
-						"statIndicator2Icon" => $distributionStat2Icon,
-						"statIndicator2Colour" => $distributionStat2Colour,
-						"offRatio" => $offRatio,
-						"defRatio" => $defRatio,
-						"stlRatio" => $stlRatio,
-						"offColour" => offenceColour,
-						"defColour" => defenceColour,
-						"stlColour" => stealthColour,
-						"bonus" => $bonus,
-						"bonusColour" => $bonusColour,
-						"bonusIcon" => $bonusIcon,
-						"bonusOffRatio" => $bonusOffPercentage,
-						"bonusDefRatio" => $bonusDefPercentage,
-						"bonusStlRatio" => $bonusStlPercentage
-					);
-				}
-
-				$location = $this->user->getLocation();
-				$this->html .= $this->page->buildElement('crimeHolder', array(
-					"crimes" => $crimeInfo,
-					"location" => $location
-				));
+				// Create the crime info to display
+				$crimeInfo[] = array(
+					"name" => $crime->C_name,
+					"rank" => $crime->R_name,
+					"time" => $this->user->getTimer("crime-" . $crime->C_id),
+					"locked" => $crime->R_exp > $this->user->info->US_exp,
+					"cooldown" => $this->timeLeft($crime->C_cooldown),
+					"percent" => $crime->C_chance, 
+					"id" => $crimeID,
+					"statIndicator1Icon" => $distributionStat1Icon,
+					"statIndicator1Colour" => $distributionStat1Colour,
+					"statIndicator2Icon" => $distributionStat2Icon,
+					"statIndicator2Colour" => $distributionStat2Colour,
+					"offRatio" => $offRatio,
+					"defRatio" => $defRatio,
+					"stlRatio" => $stlRatio,
+					"offColour" => offenceColour,
+					"defColour" => defenceColour,
+					"stlColour" => stealthColour,
+					"bonus" => $bonus,
+					"bonusColour" => $bonusColour,
+					"bonusIcon" => $bonusIcon,
+					"bonusOffRatio" => $bonusOffPercentage,
+					"bonusDefRatio" => $bonusDefPercentage,
+					"bonusStlRatio" => $bonusStlPercentage
+				);
 			}
+
+			$location = $this->user->getLocation();
+			$this->html .= $this->page->buildElement('crimeHolder', array(
+				"crimes" => $crimeInfo,
+				"location" => $location
+			));
         }
         
         public function method_commit() {
@@ -179,16 +180,6 @@
 						$crimeInfo->C_bonus
 					);
 
-					// Display the crime success alert
-                    $this->alerts[] = $this->page->buildElement('crimeCommitted', array(
-						"id" => $crimeID, 
-                        "name" => $crimeInfo->C_name,
-						"success" => true,
-						"text1" => $crimeInfo->C_successText,
-                        "text2" => $crimeInfo->C_successText2,
-						"money" => $cashReward
-                    ));
-
 					// Set the new user stats
                     $this->user->set("US_money", $this->user->info->US_money + $cashReward);
 
@@ -214,6 +205,16 @@
 
 					// No idea what this value does right now?
                     //$add = mt_rand(1, 4);
+
+					// Display the crime success alert
+                    $this->alerts[] = $this->page->buildElement('crimeCommitted', array(
+						"id" => $crimeID, 
+                        "name" => $crimeInfo->C_name,
+						"success" => true,
+						"text1" => $crimeInfo->C_successText,
+                        "text2" => $crimeInfo->C_successText2,
+						"money" => $cashReward
+                    ));
                 }
                 
 				// Update the crime timer to the commited crimes cooldown

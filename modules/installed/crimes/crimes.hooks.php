@@ -8,6 +8,7 @@
         } else {
             $page->addToTemplate('crime_timer', 0);
         }
+        $page->addToTemplate('crime_timer', $time);
     });
 
     new hook("actionMenu", function ($user) {

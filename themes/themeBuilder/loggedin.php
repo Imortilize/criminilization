@@ -173,7 +173,7 @@
 				        <li><a data-timer-type="color" data-timer="{travel_timer}" href="?page=travel">Travel</a></li>
 				        <!--<li><a href="?page=smuggle">Smuggle</a></li>
 				        <li><a href="?page=stocks">Stocks</a></li>-->
-				        <li><a href="?page=murder">Kill</a></li>
+				        <li><a data-timer-type="color" data-timer="{kill_timer}" href="?page=murder">Kill</a></li>
 					</ul>
                         <ul class="nav navbar-nav navbar-right hidden-xs">
                             <li>

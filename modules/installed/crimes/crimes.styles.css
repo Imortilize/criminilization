@@ -3,7 +3,7 @@
 :root {
 	--message-background-color: 122, 130, 136;
 	--success-color: 0, 255, 0;
-	--failure-color: 255, 26, 26;
+	--failure-color: 235, 6, 44;;
 	--money-gained-color: 0, 255, 0;
 	--cooldown-color: 135, 206, 250;
 	--offence-color: 238, 95, 91;
@@ -458,20 +458,6 @@
 }
 
 /* CRIME COMMITTED */
-
-.crime-committed-heading {
-	margin: auto;
-	padding: 15px 15px 15px 15px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;  
-	display: flex;
-	justify-content: center;
-	text-align: center;
-  	align-items: flex-end;
-	font-size: 1.25em;
-	font-weight: normal;
-}
 
 .crime-committed-background {
 	position: relative;

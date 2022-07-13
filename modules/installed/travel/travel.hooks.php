@@ -8,16 +8,16 @@
         } else {
             $page->addToTemplate('travel_timer', 0);
         }
-         $page->addToTemplate('travel_timers', $time);
+        $page->addToTemplate('travel_timers', $time);
     });
 
     new hook("locationMenu", function ($user) {
         if ($user) return array(
             "url" => "?page=travel",
-            "sort" => 1000, 
+            "text" => "Travel",
             "timer" => $user->getTimer("travel"),
             "templateTimer" => "travel_timer",
-            "text" => "Travel"
+            "sort" => 1000, 
         );
     });
 
