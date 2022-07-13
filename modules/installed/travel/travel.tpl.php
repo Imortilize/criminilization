@@ -29,20 +29,17 @@
 			<div class="main-panel">
 				<div class="main-heading-background">
 					<div class="main-panel-heading">Travel</div>    
-                   <!--<div class="main-panel-info">
-                      
-                        Your current vehicle is <span class="main-panel-info-vehicle-name">{vehicleName}</span> and you can travel <span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span> with it.
-                    </div>   -->
-                    
                     <p class="main-panel-info">
-                        You are currently in&nbsp;<span class="main-panel-info-current-location">{currentLocation}</span>.&nbsp;Your current vehicle is&nbsp;<span class="main-panel-info-vehicle-name">{vehicleName}</span>&nbsp;and you can travel&nbsp;<span class="main-panel-info-vehicle-distance"> {number_format vehicleDistance} Km</span>&nbsp;with it.
+                        <span>
+                            You are currently in
+                            <span class="main-panel-info-current-location">{currentLocation}</span>
+                            . Your current vehicle is
+                            <span class="main-panel-info-vehicle-name">{vehicleName}</span>
+                            and you can travel
+                            <span class="main-panel-info-vehicle-distance">{number_format vehicleDistance} Km</span>
+                            with it.
+                        </span>
                     </p>
-
-        
-
-                    <!--<p class="main-panel-info">
-                        <span data-reload-when-done data-timer-type="inline" data-timer="{travelTime}"></span>
-                    </p>-->
 				</div>
 
 				<div class="main-panel-body">
