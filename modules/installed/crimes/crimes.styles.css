@@ -439,17 +439,18 @@
 	background-image: url('/themes/themeBuilder/images/dark-circles.png');
 }
 
-.btn-crime-commit {
+.btn {
+	font-size: 1.25em;
 	background-color: var(--gray-light);
 	padding: 10px 50px;
 	border-radius: 8px;
 	background-image: url('/themes/themeBuilder/images/arches.png');
 }
 
-.btn-crime-commit:hover,
-.btn-crime-commit:active,
-.btn-crime-commit:focus,
-.btn-crime-commit.active {
+.btn:hover,
+.btn:active,
+.btn:focus,
+.btn.active {
   /* let's darken #004E64 a bit for hover effect */
   background: var(--gray-dark);
   color: var(--gray-lighter);
