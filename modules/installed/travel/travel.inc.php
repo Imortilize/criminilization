@@ -26,15 +26,20 @@
 
         public function constructModule() {
 
+            // Grab the timer and check if the user has a travel cooldown
             $time = $this->user->getTimer('travel');
-            if (!$this->user->checkTimer('travel')) {
-                $this->html .= $this->page->buildElement('timer', array(
-                    "timer" => "travel",
-                    "text" => 'You cant travel yet!',
-                    "time" => $time
-                ));
-            }
+            $hasTravelCooldown = !$this->user->checkTimer('travel');
 
+            // If the user has a travel cooldown active and has an alert active, don't
+            // show the travel panel, to avoid stacked up panels
+            if ($hasTravelCooldown) {
+				
+				if (count($this->alerts) > 0) {
+					return;
+				}
+            } 
+
+            // Grab all the locations
             $locations = $this->db->selectAll("SELECT * from locations WHERE L_id != :loc ORDER BY L_id", array(
                 ":loc" => $this->user->info->US_location
             ));
@@ -91,7 +96,8 @@
                         "cost" => $travelCost,
                         "distance" => $distance,
                         "id" => $locationId,
-                        "cooldown" => $travelCooldown
+                        "cooldown" => $travelCooldown,
+                        "hasTravelCooldown" => $hasTravelCooldown,
                     );
                 } else {
                     $unreachableLocations[] = array(
@@ -99,7 +105,8 @@
                         "cost" => $travelCost,
                         "distance" => $distance,
                         "id" => $locationId,
-                        "cooldown" => $travelCooldown
+                        "cooldown" => $travelCooldown,
+                        "hasTravelCooldown" => $hasTravelCooldown,
                     );
                 }  
             }
@@ -109,6 +116,7 @@
                 "unreachableLocations" => $unreachableLocations,
                 "vehicleName" => $vehicleName,
                 "vehicleDistance" => $maxVehicleDistance,
+                "hasTravelCooldown" => $hasTravelCooldown,
                 "travelTime" => $time,
                 "currentLocation" => $currentLocation->L_name
             ));
@@ -147,44 +155,60 @@
             );
             $location = $hook->run($hookData, 1)["data"];*/
 
-            if (!$location){
+            if (!$location) {
                 return $this->error("This location does not exist!");
             }
 
             if ($this->user->checkTimer('travel')) {
-                if ($location["L_id"] == $this->user->info->US_location) {
 
-                    $this->alerts[] = $this->page->buildElement('error', array("text" => 'You are already in '.$location["L_name"].'!'));
+                $currentLocationId = $this->user->info->US_location;
+                $newlocationName = $location["L_name"];
+                $newlocationId = $location["L_id"];
+                $vehicleFuel = $vehicle['V_fuel'];
+                $vehicleTravelDistance = $vehicle['V_max'];
+                $vehicleTravelTime = $vehicle['V_range'];
+                $travelCost = ($distance * $vehicleFuel);
 
-                } else if ($this->user->info->US_money < ($distance * $vehicle['V_fuel'])) {
+                // TODO: Make better
+                if ($newlocationId == $currentLocationId) {
+
+                    $this->alerts[] = $this->page->buildElement('error', array("text" => 'You are already in ' . $newlocationName . '!'));
+                    return;
+                } 
+                
+                // TODO: Make better
+                if ($this->user->info->US_money < $travelCost) {
 
                     $this->alerts[] = $this->page->buildElement('error', array("text" => 'You cant afford to travel here!'));
-
-                }elseif($distance > $vehicle['V_max']){
-                    return $this->error("Your vehicle can not go that range!");
-                } else {
-
-                    $travelCost = ($distance * $vehicle['V_fuel']);
-                    $this->user->subtract("US_money", $travelCost);
-                    $this->user->set("US_location", $location["L_id"]);
-                    $this->user->updateTimer('travel', $vehicle['V_range'], true);
-
-                    $actionHook = new hook("userAction");
-                    $action = array(
-                        "user" => $this->user->id,
-                        "module" => "travel",
-                        "id" => $id,
-                        "success" => true,
-                        "reward" => 0
-                    );
-                    $actionHook->run($action);
-
-                    $this->alerts[] = $this->page->buildElement('success', array("text" => 'You traveled to ' . $location["L_name"] . ' for '. $travelCost .'!'));
+                    return;
                 }
+                
+                if ($distance > $vehicleTravelDistance) {
+                    return $this->error("Your vehicle can not go that range!");
+                } 
+
+                // Set user stats and show feedback                
+                $this->user->subtract("US_money", $travelCost);
+                $this->user->set("US_location", $newlocationId);
+                $this->user->updateTimer('travel', $vehicleTravelTime, true);
+
+                $actionHook = new hook("userAction");
+                $action = array(
+                    "user" => $this->user->id,
+                    "module" => "travel",
+                    "id" => $id,
+                    "success" => true,
+                    "reward" => 0
+                );
+                $actionHook->run($action);
+
+                // Display the crime success alert
+                $this->alerts[] = $this->page->buildElement('locationChanged', array(
+                    "location" => $newlocationName, 
+                    "cost" => $travelCost
+                ));
             }
-
         }
-
     }
 
 

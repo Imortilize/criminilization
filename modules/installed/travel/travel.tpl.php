@@ -2,6 +2,27 @@
 
     class travelTemplate extends template {
 
+        public $locationChanged = '
+			<div class="main-panel-container-top-padded">
+				<div class="main-panel">
+					<div class="main-heading-background">
+						<div class="main-panel-heading">Travel</div>
+					</div>
+					<!--<img class="img-responsive" src="modules/installed/crimes/images/{id}.png" />-->
+					<div class="main-panel-body">
+						<div class="location-changed-background">
+							<div class="main-panel-message-holder">
+                                <p class="location-changed-header-text">Travel</p>
+                                <p class="location-changed-text">
+                                    You successfully travelled to&nbsp;<span class="location-changed-city-text">{location}</span>&nbsp;and this cost&nbsp;<span class="location-changed-money-text">${number_format cost}</span>&nbsp;.
+                                </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        ';
+
         public $locationHolder = '
 
         <div class="main-panel-container">
@@ -20,7 +41,7 @@
         
 
                     <!--<p class="main-panel-info">
-                        <span data-timer-type="inline" data-timer="{travelTime}"></span>
+                        <span data-reload-when-done data-timer-type="inline" data-timer="{travelTime}"></span>
                     </p>-->
 				</div>
 
@@ -69,7 +90,12 @@
                                             </div> 
 
                                             <div class="location-select">
-                                                <input type="radio" class ="input" id="location{id}" name="location-select">
+                                                {#if hasTravelCooldown}
+                                                    <input type="radio" class ="input" id="location{id}" name="location-select" disabled>
+                                                {/if}
+                                                {#unless hasTravelCooldown}
+                                                    <input type="radio" class ="input" id="location{id}" name="location-select">
+                                                {/unless}
                                             </div> 
                                         </div>
                                     </div>
@@ -77,7 +103,12 @@
 
                                 <div class="button-commit-background">
                                     <div class="button-commit-holder">
-                                        <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                        {#if hasTravelCooldown}
+                                            <a class="btn disabled" id="commit-btn" data-redirect-when-done="?page=travel" data-timer-type="inline" data-timer="{travelTime}"></a>
+                                        {/if}
+                                        {#unless hasTravelCooldown}
+                                            <a class="btn" id="commit-btn" href="?page=travel&action=fly">Travel</a>
+                                        {/unless}
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +130,7 @@
                                             </div> 
 
                                             <div class="location-select">
-                                                <input type="radio" class ="input" id="location{id}" name="location-select" disabled="true">
+                                                <input type="radio" class ="input" id="location{id}" name="location-select" disabled>
                                             </div> 
                                         </div>
                                     </div>

@@ -459,20 +459,6 @@
 
 /* CRIME COMMITTED */
 
-.crime-committed-heading {
-	margin: auto;
-	padding: 15px 15px 15px 15px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;  
-	display: flex;
-	justify-content: center;
-	text-align: center;
-  	align-items: flex-end;
-	font-size: 1.25em;
-	font-weight: normal;
-}
-
 .crime-committed-background {
 	position: relative;
 	min-height: 420px;
