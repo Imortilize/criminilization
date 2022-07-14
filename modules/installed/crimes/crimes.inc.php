@@ -14,10 +14,12 @@
             if (!$this->user->checkTimer('crime')) {
 				
 				if (count($this->alerts) == 0) {
+					$crimeTimer = $this->user->getTimer('crime');
 					$this->alerts[] = $this->page->buildElement('crimeCooldown', array(
 						"name" => "Crimes",
 						"header" => "Cooldown",
 						"text" => "You must wait until you can commit another crime.",
+						"crimeTimer" => $crimeTimer
 					));
 				}
 				

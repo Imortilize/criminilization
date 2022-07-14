@@ -1,3 +1,4 @@
+var timer;
 var timeOffset = 0;
 
 $(function () {
@@ -29,18 +30,21 @@ function checkTimer(interval) {
 
         if((addClass == 'text-success') && $(this).attr('data-reload-when-done') !== undefined) {
             setTimeout(function () {
+                clearInterval(timer);
                 document.location.reload();
-            }, 2500);
+            }, 1000);
         }
 
         const redirect = $(this).attr('data-redirect-when-done');
         if((addClass == 'text-success') && (redirect !== undefined)) {
             setTimeout(function () {
+                clearInterval(timer);
                 document.location.href = (document.location.origin + "/" + redirect);
-            }, 2500);
+            }, 1000);
         }
 
-        if((addClass == 'text-success') && $(this).attr('data-remove-when-done') !== undefined) {
+        if((addClass == 'text-success') && $(this).attr('data-remove-when-done') !== undefined) {    
+            clearInterval(timer);   
             $(this).parent().remove();
         }
 
@@ -95,7 +99,7 @@ $(function () {
 
     checkTimer(0);
 
-    var timer = setInterval(function () {
+    timer = setInterval(function () {
         checkTimer(1);
     }, 1000);
 
