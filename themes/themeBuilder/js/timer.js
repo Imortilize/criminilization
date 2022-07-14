@@ -19,6 +19,9 @@ function checkTimer(interval) {
             if ((time - interval) == -1) {
                 removeClass = 'text-danger';
                 addClass = 'text-success';
+
+                // Timer has finished and we are in the timer loop
+                clearInterval(timer);
             } else {
                 removeClass = 'text-success';
                 addClass = 'text-danger';
@@ -32,7 +35,7 @@ function checkTimer(interval) {
             setTimeout(function () {
                 clearInterval(timer);
                 document.location.reload();
-            }, 1000);
+           }, 1000);
         }
 
         const redirect = $(this).attr('data-redirect-when-done');
