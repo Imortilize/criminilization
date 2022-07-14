@@ -173,7 +173,7 @@
 						</div>
                         <div class="crime-button-background">
                             <div class="crime-commit-holder">
-                                <a class="btn btn-crime-commit" id="continue-btn" href="?page=crimes">Refresh</a>
+                                <a class="btn disabled" id="continue-btn" data-redirect-when-done="?page=crimes" data-timer-type="inline" data-timer="{crimeTimer}"></a>
                             </div>
                         </div>
 					</div>
